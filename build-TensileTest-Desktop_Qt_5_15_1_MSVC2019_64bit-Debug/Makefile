@@ -266,6 +266,7 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 		..\..\5.15.1\msvc2019_64\mkspecs\features\qt_config.prf \
 		..\..\5.15.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		..\..\5.15.1\msvc2019_64\mkspecs\common\msvc-version.conf \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -291,12 +292,13 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 		..\..\5.15.1\msvc2019_64\mkspecs\features\yacc.prf \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\lex.prf \
 		..\TensileTest\TensileTest.pro \
+		..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Widgets.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Gui.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Core.prl \
 		..\..\5.15.1\msvc2019_64\lib\qtmain.prl \
-		.qmake.stash \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf \
+		..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Guid.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Cored.prl \
@@ -484,6 +486,7 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 ..\..\5.15.1\msvc2019_64\mkspecs\features\qt_config.prf:
 ..\..\5.15.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 ..\..\5.15.1\msvc2019_64\mkspecs\common\msvc-version.conf:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -509,12 +512,13 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 ..\..\5.15.1\msvc2019_64\mkspecs\features\yacc.prf:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\lex.prf:
 ..\TensileTest\TensileTest.pro:
+..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Widgets.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Gui.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Core.prl:
 ..\..\5.15.1\msvc2019_64\lib\qtmain.prl:
-.qmake.stash:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf:
+..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Guid.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Cored.prl:
