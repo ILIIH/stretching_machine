@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include <qcustomplot.h>
-#include <QVector>
+#include <graphic.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,15 +17,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_addDot_clicked();
 
 private:
     Ui::MainWindow *ui;
 
-    int dotIndex = 0;
-
-    QCustomPlot *Graphic;
-    QCPCurve *plot;
-    QVector<QCPCurveData> Dots;
+    graphic Graphic;
 };
 #endif // MAINWINDOW_H

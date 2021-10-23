@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -26,9 +27,11 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QCustomPlot *wGraphic;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
-    QLineEdit *lineEdit_2;
+    QLineEdit *length;
+    QPushButton *addDot;
+    QLineEdit *force;
+    QLabel *label;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -42,15 +45,21 @@ public:
         wGraphic = new QCustomPlot(centralwidget);
         wGraphic->setObjectName(QString::fromUtf8("wGraphic"));
         wGraphic->setGeometry(QRect(11, 11, 778, 421));
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(20, 520, 113, 24));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 560, 111, 25));
-        lineEdit_2 = new QLineEdit(centralwidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(150, 520, 113, 24));
+        length = new QLineEdit(centralwidget);
+        length->setObjectName(QString::fromUtf8("length"));
+        length->setGeometry(QRect(20, 520, 113, 24));
+        addDot = new QPushButton(centralwidget);
+        addDot->setObjectName(QString::fromUtf8("addDot"));
+        addDot->setGeometry(QRect(20, 560, 111, 25));
+        force = new QLineEdit(centralwidget);
+        force->setObjectName(QString::fromUtf8("force"));
+        force->setGeometry(QRect(150, 520, 113, 24));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(20, 490, 56, 16));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(150, 490, 56, 16));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -68,7 +77,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        length->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        addDot->setText(QCoreApplication::translate("MainWindow", "add a dot", nullptr));
+        force->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "length", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "force", nullptr));
     } // retranslateUi
 
 };
