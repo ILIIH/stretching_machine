@@ -295,12 +295,14 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 		..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Widgets.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Gui.prl \
+		..\..\5.15.1\msvc2019_64\lib\Qt5SerialPort.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Core.prl \
 		..\..\5.15.1\msvc2019_64\lib\qtmain.prl \
 		..\..\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf \
 		..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Guid.prl \
+		..\..\5.15.1\msvc2019_64\lib\Qt5SerialPortd.prl \
 		..\..\5.15.1\msvc2019_64\lib\Qt5Cored.prl \
 		..\..\5.15.1\msvc2019_64\lib\qtmaind.prl
 	$(QMAKE) -o Makefile ..\TensileTest\TensileTest.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -515,12 +517,14 @@ Makefile: ..\TensileTest\TensileTest.pro ..\..\5.15.1\msvc2019_64\mkspecs\win32-
 ..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Widgets.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Gui.prl:
+..\..\5.15.1\msvc2019_64\lib\Qt5SerialPort.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Core.prl:
 ..\..\5.15.1\msvc2019_64\lib\qtmain.prl:
 ..\..\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf:
 ..\..\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Guid.prl:
+..\..\5.15.1\msvc2019_64\lib\Qt5SerialPortd.prl:
 ..\..\5.15.1\msvc2019_64\lib\Qt5Cored.prl:
 ..\..\5.15.1\msvc2019_64\lib\qtmaind.prl:
 qmake: FORCE

@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include <graphic.h>
+
+#include <serialports.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +22,8 @@ public:
 private slots:
 
     void on_addDot_clicked();
+
+    void serialRecieve();
 
 private:
     Ui::MainWindow *ui;
