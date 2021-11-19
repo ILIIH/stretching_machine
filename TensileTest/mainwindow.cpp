@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QApplication>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,11 +18,19 @@ MainWindow::MainWindow(QWidget *parent)
         port.setPort(info);
         if(port.open(QIODevice::ReadWrite))
         {
-            ui->comLForce->addItem(info.portName(), 0);
-            ui->comLLength->addItem(info.portName(), 0);
+            portList.append(info.portName());
         }
     }
+    ui->comLForce->addItems(portList);
+    ui->comLLength->addItems(portList);
+}
 
+void MainWindow::comBox()
+{
+    ui->comLForce->clear();
+    ui->comLForce->addItems(portList);
+    ui->comLLength->clear();
+    ui->comLLength->addItems(portList);
 }
 
 MainWindow::~MainWindow()
@@ -43,5 +52,48 @@ void MainWindow::serialRecieve()
 
 void MainWindow::on_openBForce_clicked()
 {
+    QString name = ui->comLForce->currentText();
 
+    portList.removeOne(name);
+    usedPorts.append(name);
+
+    comBox();
+
+    //set oportunity to click on the buttons
+    ui->openBForce->setEnabled(false);
+    ui->closeBForce->setEnabled(true);
+
+    //set style and text of labels
+    ui->labelPortForce->setText(name);
+    ui->labelPortForce->setStyleSheet("color: rgb(0, 170, 0)");
+    ui->labelConditionForce->setText("CONNECTED");
+    ui->labelConditionForce->setStyleSheet("color: rgb(0, 170, 0)");
+
+    //serial
+    Force.setName(name);
+    Force.switchConection();
+}
+
+void MainWindow::on_openBLength_clicked()
+{
+    QString name = ui->comLLength->currentText();
+
+    portList.removeOne(name);
+    usedPorts.append(name);
+
+    comBox();
+
+    //set oportunity to click on the buttons
+    ui->openBLength->setEnabled(false);
+    ui->closeBLength->setEnabled(true);
+
+    //set style and text of labels
+    ui->labelPortLength->setText(name);
+    ui->labelPortLength->setStyleSheet("color: rgb(0, 170, 0)");
+    ui->labelConditionLength->setText("CONNECTED");
+    ui->labelConditionLength->setStyleSheet("color: rgb(0, 170, 0)");
+
+    //serial
+    Length.setName(name);
+    Length.switchConection();
 }

@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void comBox();
     ~MainWindow();
 
 private slots:
@@ -25,9 +26,15 @@ private slots:
 
     void serialRecieve();
 
+    void on_openBForce_clicked();
+
+    void on_openBLength_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     graphic Graphic;
+    SerialPorts Force, Length;
+    QList<QString> portList, usedPorts;
 };
 #endif // MAINWINDOW_H

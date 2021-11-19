@@ -6,14 +6,21 @@ SerialPorts::SerialPorts()
     connect(serial, &QSerialPort::readyRead, this, &SerialPorts::run);
 }
 
+SerialPorts::SerialPorts(QString name)
+{
+    this->name = name;
+    serial = new QSerialPort(this);
+    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::run);
+}
+
 SerialPorts::~SerialPorts()
 {
     serial->close();
 }
 
-void SerialPorts::addPort(QString name)
+void SerialPorts::addPort()
 {
-    serial->setPortName(name);
+    serial->setPortName(this->name);
     portSettings();
 }
 
@@ -26,9 +33,15 @@ void SerialPorts::portSettings()
     serial->setFlowControl(QSerialPort::NoFlowControl);
 }
 
-void SerialPorts::changeName(QString name)
+void SerialPorts::setName(QString name)
 {
-    serial->setPortName(name);
+    this->name = name;
+}
+
+void SerialPorts::changePort(QString name)
+{
+    setName(name);
+    serial->setPortName(this->name);
 }
 
 void SerialPorts::portOpen()
@@ -44,6 +57,21 @@ void SerialPorts::portClose()
 void SerialPorts::writeData(QString row)
 {
     //serial->write(row, Q_INT64_C());
+}
+
+void SerialPorts::switchConection()
+{
+    conection = !conection;
+}
+
+bool SerialPorts::getConection()
+{
+    return conection;
+}
+
+QString SerialPorts::getName()
+{
+    return name;
 }
 
 void SerialPorts::run()
