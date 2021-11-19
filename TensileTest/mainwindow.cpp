@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Tensile-Test");
 
     Graphic.setQCustomPlot(ui->wGraphic);
 
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
             ui->comLLength->addItem(info.portName(), 0);
         }
     }
+
 }
 
 MainWindow::~MainWindow()
@@ -35,6 +37,11 @@ void MainWindow::on_addDot_clicked()
 }
 
 void MainWindow::serialRecieve()
+{
+
+}
+
+void MainWindow::on_openBForce_clicked()
 {
 
 }

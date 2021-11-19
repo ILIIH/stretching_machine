@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLCDNumber>
@@ -20,8 +21,8 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -73,21 +74,35 @@ public:
     QPushButton *openBLength;
     QPushButton *closeBLength;
     QGroupBox *groupBox_2;
-    QHBoxLayout *horizontalLayout_13;
-    QHBoxLayout *horizontalLayout_12;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *labelSet;
-    QComboBox *comSet;
-    QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout_7;
-    QLabel *labelSet_2;
-    QSpinBox *spinBox;
-    QSpacerItem *verticalSpacer_5;
+    QSplitter *splitter_12;
+    QLabel *NDB;
+    QSplitter *splitter_7;
+    QLabel *labelSet;
+    QLineEdit *lineSeries;
+    QLabel *DFD;
+    QSplitter *splitter_6;
+    QSplitter *splitter;
+    QLabel *drawFromDatabase;
+    QComboBox *comboBox;
+    QSplitter *splitter_5;
+    QLabel *drawFromDatabase_2;
+    QComboBox *comboBox_2;
     QGroupBox *groupBox_3;
-    QHBoxLayout *horizontalLayout_10;
-    QVBoxLayout *verticalLayout_8;
+    QHBoxLayout *horizontalLayout_12;
+    QSplitter *splitter_11;
     QLCDNumber *lcdN;
-    QSpacerItem *verticalSpacer_3;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_6;
+    QSplitter *splitter_8;
+    QLabel *labelForce;
+    QDoubleSpinBox *spinForce;
+    QSplitter *splitter_10;
+    QLabel *label_4;
+    QDoubleSpinBox *spinFrequency;
+    QSplitter *splitter_9;
+    QRadioButton *radioNew;
+    QRadioButton *radioExisting;
     QHBoxLayout *horizontalLayout_9;
     QPushButton *drawB;
     QPushButton *stopDB;
@@ -315,52 +330,58 @@ public:
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setMaximumSize(QSize(16777215, 200));
-        horizontalLayout_13 = new QHBoxLayout(groupBox_2);
-        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
-        horizontalLayout_12 = new QHBoxLayout();
-        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        labelSet = new QLabel(groupBox_2);
+        verticalLayout_7 = new QVBoxLayout(groupBox_2);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        splitter_12 = new QSplitter(groupBox_2);
+        splitter_12->setObjectName(QString::fromUtf8("splitter_12"));
+        splitter_12->setOrientation(Qt::Vertical);
+        NDB = new QLabel(splitter_12);
+        NDB->setObjectName(QString::fromUtf8("NDB"));
+        NDB->setFont(font);
+        splitter_12->addWidget(NDB);
+        splitter_7 = new QSplitter(splitter_12);
+        splitter_7->setObjectName(QString::fromUtf8("splitter_7"));
+        splitter_7->setOrientation(Qt::Horizontal);
+        labelSet = new QLabel(splitter_7);
         labelSet->setObjectName(QString::fromUtf8("labelSet"));
         labelSet->setFont(font);
+        splitter_7->addWidget(labelSet);
+        lineSeries = new QLineEdit(splitter_7);
+        lineSeries->setObjectName(QString::fromUtf8("lineSeries"));
+        splitter_7->addWidget(lineSeries);
+        splitter_12->addWidget(splitter_7);
+        DFD = new QLabel(splitter_12);
+        DFD->setObjectName(QString::fromUtf8("DFD"));
+        DFD->setFont(font);
+        splitter_12->addWidget(DFD);
+        splitter_6 = new QSplitter(splitter_12);
+        splitter_6->setObjectName(QString::fromUtf8("splitter_6"));
+        splitter_6->setOrientation(Qt::Horizontal);
+        splitter = new QSplitter(splitter_6);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setOrientation(Qt::Vertical);
+        drawFromDatabase = new QLabel(splitter);
+        drawFromDatabase->setObjectName(QString::fromUtf8("drawFromDatabase"));
+        drawFromDatabase->setFont(font);
+        splitter->addWidget(drawFromDatabase);
+        comboBox = new QComboBox(splitter);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        splitter->addWidget(comboBox);
+        splitter_6->addWidget(splitter);
+        splitter_5 = new QSplitter(splitter_6);
+        splitter_5->setObjectName(QString::fromUtf8("splitter_5"));
+        splitter_5->setOrientation(Qt::Vertical);
+        drawFromDatabase_2 = new QLabel(splitter_5);
+        drawFromDatabase_2->setObjectName(QString::fromUtf8("drawFromDatabase_2"));
+        drawFromDatabase_2->setFont(font);
+        splitter_5->addWidget(drawFromDatabase_2);
+        comboBox_2 = new QComboBox(splitter_5);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        splitter_5->addWidget(comboBox_2);
+        splitter_6->addWidget(splitter_5);
+        splitter_12->addWidget(splitter_6);
 
-        verticalLayout_6->addWidget(labelSet);
-
-        comSet = new QComboBox(groupBox_2);
-        comSet->setObjectName(QString::fromUtf8("comSet"));
-
-        verticalLayout_6->addWidget(comSet);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_6->addItem(verticalSpacer_4);
-
-
-        horizontalLayout_12->addLayout(verticalLayout_6);
-
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        labelSet_2 = new QLabel(groupBox_2);
-        labelSet_2->setObjectName(QString::fromUtf8("labelSet_2"));
-        labelSet_2->setFont(font);
-
-        verticalLayout_7->addWidget(labelSet_2);
-
-        spinBox = new QSpinBox(groupBox_2);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-
-        verticalLayout_7->addWidget(spinBox);
-
-        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_7->addItem(verticalSpacer_5);
-
-
-        horizontalLayout_12->addLayout(verticalLayout_7);
-
-
-        horizontalLayout_13->addLayout(horizontalLayout_12);
+        verticalLayout_7->addWidget(splitter_12);
 
 
         horizontalLayout_14->addWidget(groupBox_2);
@@ -368,29 +389,68 @@ public:
         groupBox_3 = new QGroupBox(centralwidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setMaximumSize(QSize(16777215, 200));
-        horizontalLayout_10 = new QHBoxLayout(groupBox_3);
-        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        verticalLayout_8 = new QVBoxLayout();
-        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        lcdN = new QLCDNumber(groupBox_3);
+        horizontalLayout_12 = new QHBoxLayout(groupBox_3);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        splitter_11 = new QSplitter(groupBox_3);
+        splitter_11->setObjectName(QString::fromUtf8("splitter_11"));
+        splitter_11->setOrientation(Qt::Vertical);
+        lcdN = new QLCDNumber(splitter_11);
         lcdN->setObjectName(QString::fromUtf8("lcdN"));
         lcdN->setMinimumSize(QSize(0, 50));
+        splitter_11->addWidget(lcdN);
+        widget = new QWidget(splitter_11);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        verticalLayout_6 = new QVBoxLayout(widget);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
+        splitter_8 = new QSplitter(widget);
+        splitter_8->setObjectName(QString::fromUtf8("splitter_8"));
+        splitter_8->setOrientation(Qt::Horizontal);
+        labelForce = new QLabel(splitter_8);
+        labelForce->setObjectName(QString::fromUtf8("labelForce"));
+        labelForce->setFont(font);
+        splitter_8->addWidget(labelForce);
+        spinForce = new QDoubleSpinBox(splitter_8);
+        spinForce->setObjectName(QString::fromUtf8("spinForce"));
+        splitter_8->addWidget(spinForce);
 
-        verticalLayout_8->addWidget(lcdN);
+        verticalLayout_6->addWidget(splitter_8);
 
-        verticalSpacer_3 = new QSpacerItem(20, 110, QSizePolicy::Minimum, QSizePolicy::Maximum);
+        splitter_10 = new QSplitter(widget);
+        splitter_10->setObjectName(QString::fromUtf8("splitter_10"));
+        splitter_10->setOrientation(Qt::Horizontal);
+        label_4 = new QLabel(splitter_10);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setFont(font);
+        splitter_10->addWidget(label_4);
+        spinFrequency = new QDoubleSpinBox(splitter_10);
+        spinFrequency->setObjectName(QString::fromUtf8("spinFrequency"));
+        splitter_10->addWidget(spinFrequency);
 
-        verticalLayout_8->addItem(verticalSpacer_3);
+        verticalLayout_6->addWidget(splitter_10);
+
+        splitter_9 = new QSplitter(widget);
+        splitter_9->setObjectName(QString::fromUtf8("splitter_9"));
+        splitter_9->setOrientation(Qt::Horizontal);
+        radioNew = new QRadioButton(splitter_9);
+        radioNew->setObjectName(QString::fromUtf8("radioNew"));
+        radioNew->setChecked(true);
+        splitter_9->addWidget(radioNew);
+        radioExisting = new QRadioButton(splitter_9);
+        radioExisting->setObjectName(QString::fromUtf8("radioExisting"));
+        splitter_9->addWidget(radioExisting);
+
+        verticalLayout_6->addWidget(splitter_9);
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        drawB = new QPushButton(groupBox_3);
+        drawB = new QPushButton(widget);
         drawB->setObjectName(QString::fromUtf8("drawB"));
         drawB->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 0);"));
 
         horizontalLayout_9->addWidget(drawB);
 
-        stopDB = new QPushButton(groupBox_3);
+        stopDB = new QPushButton(widget);
         stopDB->setObjectName(QString::fromUtf8("stopDB"));
         stopDB->setEnabled(false);
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
@@ -398,10 +458,11 @@ public:
         horizontalLayout_9->addWidget(stopDB);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_9);
+        verticalLayout_6->addLayout(horizontalLayout_9);
 
+        splitter_11->addWidget(widget);
 
-        horizontalLayout_10->addLayout(verticalLayout_8);
+        horizontalLayout_12->addWidget(splitter_11);
 
 
         horizontalLayout_14->addWidget(groupBox_3);
@@ -494,9 +555,17 @@ public:
         openBLength->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
         closeBLength->setText(QCoreApplication::translate("MainWindow", "Close", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Database", nullptr));
-        labelSet->setText(QCoreApplication::translate("MainWindow", "Series", nullptr));
-        labelSet_2->setText(QCoreApplication::translate("MainWindow", "Experiment Number", nullptr));
+        NDB->setText(QCoreApplication::translate("MainWindow", "NEW:", nullptr));
+        labelSet->setText(QCoreApplication::translate("MainWindow", "Series:", nullptr));
+        lineSeries->setText(QCoreApplication::translate("MainWindow", "New Series", nullptr));
+        DFD->setText(QCoreApplication::translate("MainWindow", "DRAW FROM DATABASE:", nullptr));
+        drawFromDatabase->setText(QCoreApplication::translate("MainWindow", "Series", nullptr));
+        drawFromDatabase_2->setText(QCoreApplication::translate("MainWindow", "Experiment", nullptr));
         groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "Drawing", nullptr));
+        labelForce->setText(QCoreApplication::translate("MainWindow", "Force:", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Frequency:", nullptr));
+        radioNew->setText(QCoreApplication::translate("MainWindow", "New", nullptr));
+        radioExisting->setText(QCoreApplication::translate("MainWindow", "Existing", nullptr));
         drawB->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         stopDB->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
         groupBox_4->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
