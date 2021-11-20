@@ -2,10 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QThread>
+#include <QMessageBox>
 
 #include <graphic.h>
 
 #include <serialports.h>
+
+#include <timer.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,11 +38,28 @@ private slots:
 
     void on_closeBLength_clicked();
 
+    void on_drawB_clicked();
+
+    void on_radioNew_clicked();
+
+    void on_radioExisting_clicked();
+
+    void clockDraw();
+
+    void finishGraphThread();
+
+    void on_stopDB_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     graphic Graphic;
     SerialPorts Force, Length;
     QList<QString> portList, usedPorts;
+
+    QThread threadDraw;
+    Timer timerDraw;
+
+    double x = 0;
 };
 #endif // MAINWINDOW_H

@@ -13,13 +13,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
-    serialports.cpp
+    serialports.cpp \
+    timer.cpp
 
 HEADERS += \
     graphic.h \
     mainwindow.h \
     qcustomplot.h \
-    serialports.h
+    serialports.h \
+    timer.h
 
 FORMS += \
     mainwindow.ui

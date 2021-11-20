@@ -84,10 +84,10 @@ public:
     QSplitter *splitter_6;
     QSplitter *splitter;
     QLabel *drawFromDatabase;
-    QComboBox *comboBox;
+    QComboBox *comSeries;
     QSplitter *splitter_5;
     QLabel *drawFromDatabase_2;
-    QComboBox *comboBox_2;
+    QComboBox *comExperiment;
     QGroupBox *groupBox_3;
     QHBoxLayout *horizontalLayout_12;
     QSplitter *splitter_11;
@@ -364,10 +364,10 @@ public:
         drawFromDatabase->setObjectName(QString::fromUtf8("drawFromDatabase"));
         drawFromDatabase->setFont(font);
         splitter->addWidget(drawFromDatabase);
-        comboBox = new QComboBox(splitter);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setEnabled(false);
-        splitter->addWidget(comboBox);
+        comSeries = new QComboBox(splitter);
+        comSeries->setObjectName(QString::fromUtf8("comSeries"));
+        comSeries->setEnabled(false);
+        splitter->addWidget(comSeries);
         splitter_6->addWidget(splitter);
         splitter_5 = new QSplitter(splitter_6);
         splitter_5->setObjectName(QString::fromUtf8("splitter_5"));
@@ -376,10 +376,10 @@ public:
         drawFromDatabase_2->setObjectName(QString::fromUtf8("drawFromDatabase_2"));
         drawFromDatabase_2->setFont(font);
         splitter_5->addWidget(drawFromDatabase_2);
-        comboBox_2 = new QComboBox(splitter_5);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setEnabled(false);
-        splitter_5->addWidget(comboBox_2);
+        comExperiment = new QComboBox(splitter_5);
+        comExperiment->setObjectName(QString::fromUtf8("comExperiment"));
+        comExperiment->setEnabled(false);
+        splitter_5->addWidget(comExperiment);
         splitter_6->addWidget(splitter_5);
         splitter_12->addWidget(splitter_6);
 
@@ -448,7 +448,7 @@ public:
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         drawB = new QPushButton(layoutWidget);
         drawB->setObjectName(QString::fromUtf8("drawB"));
-        drawB->setEnabled(false);
+        drawB->setEnabled(true);
         drawB->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 0);"));
 
         horizontalLayout_9->addWidget(drawB);
