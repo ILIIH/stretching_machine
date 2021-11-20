@@ -33,14 +33,15 @@ void SerialPorts::portSettings()
     serial->setFlowControl(QSerialPort::NoFlowControl);
 }
 
-void SerialPorts::setName(QString name)
+void SerialPorts::setName(QString name, int index)
 {
     this->name = name;
+    this->index = index;
 }
 
-void SerialPorts::changePort(QString name)
+void SerialPorts::changePort(QString name, int index)
 {
-    setName(name);
+    setName(name, index);
     serial->setPortName(this->name);
 }
 
@@ -64,14 +65,19 @@ void SerialPorts::switchConection()
     conection = !conection;
 }
 
-bool SerialPorts::getConection()
+const bool SerialPorts::getConection()
 {
     return conection;
 }
 
-QString SerialPorts::getName()
+const QString SerialPorts::getName()
 {
     return name;
+}
+
+const int SerialPorts::getIndex()
+{
+    return index;
 }
 
 void SerialPorts::run()

@@ -30,6 +30,10 @@ private slots:
 
     void on_openBLength_clicked();
 
+    void on_closeBForce_clicked();
+
+    void on_closeBLength_clicked();
+
 private:
     Ui::MainWindow *ui;
 

@@ -92,7 +92,7 @@ public:
     QHBoxLayout *horizontalLayout_12;
     QSplitter *splitter_11;
     QLCDNumber *lcdN;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_6;
     QSplitter *splitter_8;
     QLabel *labelForce;
@@ -366,6 +366,7 @@ public:
         splitter->addWidget(drawFromDatabase);
         comboBox = new QComboBox(splitter);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setEnabled(false);
         splitter->addWidget(comboBox);
         splitter_6->addWidget(splitter);
         splitter_5 = new QSplitter(splitter_6);
@@ -377,6 +378,7 @@ public:
         splitter_5->addWidget(drawFromDatabase_2);
         comboBox_2 = new QComboBox(splitter_5);
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBox_2->setEnabled(false);
         splitter_5->addWidget(comboBox_2);
         splitter_6->addWidget(splitter_5);
         splitter_12->addWidget(splitter_6);
@@ -398,12 +400,12 @@ public:
         lcdN->setObjectName(QString::fromUtf8("lcdN"));
         lcdN->setMinimumSize(QSize(0, 50));
         splitter_11->addWidget(lcdN);
-        widget = new QWidget(splitter_11);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        verticalLayout_6 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_11);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        splitter_8 = new QSplitter(widget);
+        splitter_8 = new QSplitter(layoutWidget);
         splitter_8->setObjectName(QString::fromUtf8("splitter_8"));
         splitter_8->setOrientation(Qt::Horizontal);
         labelForce = new QLabel(splitter_8);
@@ -416,7 +418,7 @@ public:
 
         verticalLayout_6->addWidget(splitter_8);
 
-        splitter_10 = new QSplitter(widget);
+        splitter_10 = new QSplitter(layoutWidget);
         splitter_10->setObjectName(QString::fromUtf8("splitter_10"));
         splitter_10->setOrientation(Qt::Horizontal);
         label_4 = new QLabel(splitter_10);
@@ -429,7 +431,7 @@ public:
 
         verticalLayout_6->addWidget(splitter_10);
 
-        splitter_9 = new QSplitter(widget);
+        splitter_9 = new QSplitter(layoutWidget);
         splitter_9->setObjectName(QString::fromUtf8("splitter_9"));
         splitter_9->setOrientation(Qt::Horizontal);
         radioNew = new QRadioButton(splitter_9);
@@ -444,13 +446,14 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        drawB = new QPushButton(widget);
+        drawB = new QPushButton(layoutWidget);
         drawB->setObjectName(QString::fromUtf8("drawB"));
+        drawB->setEnabled(false);
         drawB->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 0);"));
 
         horizontalLayout_9->addWidget(drawB);
 
-        stopDB = new QPushButton(widget);
+        stopDB = new QPushButton(layoutWidget);
         stopDB->setObjectName(QString::fromUtf8("stopDB"));
         stopDB->setEnabled(false);
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
@@ -460,7 +463,7 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_9);
 
-        splitter_11->addWidget(widget);
+        splitter_11->addWidget(layoutWidget);
 
         horizontalLayout_12->addWidget(splitter_11);
 

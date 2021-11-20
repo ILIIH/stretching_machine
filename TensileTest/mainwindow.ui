@@ -426,7 +426,11 @@
                  <string>Series</string>
                 </property>
                </widget>
-               <widget class="QComboBox" name="comboBox"/>
+               <widget class="QComboBox" name="comboBox">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
               </widget>
               <widget class="QSplitter" name="splitter_5">
                <property name="orientation">
@@ -443,7 +447,11 @@
                  <string>Experiment</string>
                 </property>
                </widget>
-               <widget class="QComboBox" name="comboBox_2"/>
+               <widget class="QComboBox" name="comboBox_2">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
               </widget>
              </widget>
             </widget>
@@ -476,7 +484,7 @@
                </size>
               </property>
              </widget>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <layout class="QVBoxLayout" name="verticalLayout_6">
                <item>
                 <widget class="QSplitter" name="splitter_8">
@@ -540,6 +548,9 @@
                 <layout class="QHBoxLayout" name="horizontalLayout_9">
                  <item>
                   <widget class="QPushButton" name="drawB">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(0, 170, 0);</string>
                    </property>

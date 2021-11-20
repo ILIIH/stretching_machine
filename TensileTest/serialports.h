@@ -8,8 +8,10 @@
 class SerialPorts : public QObject
 {
     Q_OBJECT
-    QString name;
     QSerialPort *serial;
+
+    QString name;
+    int index;
     bool conection = false;
 public:
     SerialPorts();
@@ -18,14 +20,15 @@ public:
 
     void addPort();
     void portSettings();
-    void setName(QString);
-    void changePort(QString);
+    void setName(QString, int);
+    void changePort(QString, int);
     void portOpen();
     void portClose();
     void writeData(QString);
     void switchConection();
-    bool getConection();
-    QString getName();
+    const bool getConection();
+    const QString getName();
+    const int getIndex();
 
 public slots:
     void run(); // Метод с полезной нагрузкой, который может выполняться в цикле

@@ -53,6 +53,7 @@ void MainWindow::serialRecieve()
 void MainWindow::on_openBForce_clicked()
 {
     QString name = ui->comLForce->currentText();
+    int index = ui->comLForce->currentIndex();
 
     portList.removeOne(name);
     usedPorts.append(name);
@@ -70,13 +71,14 @@ void MainWindow::on_openBForce_clicked()
     ui->labelConditionForce->setStyleSheet("color: rgb(0, 170, 0)");
 
     //serial
-    Force.setName(name);
+    Force.setName(name, index);
     Force.switchConection();
 }
 
 void MainWindow::on_openBLength_clicked()
 {
     QString name = ui->comLLength->currentText();
+    int index = ui->comLLength->currentIndex();
 
     portList.removeOne(name);
     usedPorts.append(name);
@@ -94,6 +96,46 @@ void MainWindow::on_openBLength_clicked()
     ui->labelConditionLength->setStyleSheet("color: rgb(0, 170, 0)");
 
     //serial
-    Length.setName(name);
+    Length.setName(name, index);
+    Length.switchConection();
+}
+
+void MainWindow::on_closeBForce_clicked()
+{
+    usedPorts.removeOne(Force.getName());
+    portList.append(Force.getName());
+
+    comBox();
+
+    //set opportunity to click on the buttons
+    ui->openBForce->setEnabled(true);
+    ui->closeBForce->setEnabled(false);
+
+    //set style and text of labels
+    ui->labelPortForce->setText("None");
+    ui->labelPortForce->setStyleSheet("color: rgb(255, 0, 0)");
+    ui->labelConditionForce->setText("None");
+    ui->labelConditionForce->setStyleSheet("color: rgb(255, 0, 0)");
+
+    Force.switchConection();
+}
+
+void MainWindow::on_closeBLength_clicked()
+{
+    usedPorts.removeOne(Length.getName());
+    portList.append(Length.getName());
+
+    comBox();
+
+    //set opportunity to click on the buttons
+    ui->openBLength->setEnabled(true);
+    ui->closeBLength->setEnabled(false);
+
+    //set style and text of labels
+    ui->labelPortLength->setText("None");
+    ui->labelPortLength->setStyleSheet("color: rgb(255, 0, 0)");
+    ui->labelConditionLength->setText("None");
+    ui->labelConditionLength->setStyleSheet("color: rgb(255, 0, 0)");
+
     Length.switchConection();
 }
