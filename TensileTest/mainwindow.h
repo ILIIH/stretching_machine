@@ -46,7 +46,11 @@ private slots:
 
     void clockDraw();
 
+    void clockSerial();
+
     void finishGraphThread();
+
+    void finishSerialThread();
 
     void on_stopDB_clicked();
 
@@ -59,6 +63,8 @@ private:
 
     QThread threadDraw;
     Timer timerDraw;
+    QThread threadSerial;
+    Timer timerSerial;
 
     double x = 0;
 };

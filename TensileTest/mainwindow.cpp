@@ -29,7 +29,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&timerDraw, &Timer::process, this, &MainWindow::clockDraw);
     connect(&timerDraw, &Timer::finished, this, &MainWindow::finishGraphThread);
 
+    timerSerial.setFrequancy(100);
+    connect(&threadSerial, &QThread::started, &timerSerial, &Timer::start);
+    connect(&timerSerial, &Timer::process, this, &MainWindow::clockSerial);
+    connect(&timerSerial, &Timer::finished, this, &MainWindow::finishSerialThread);
+
     timerDraw.moveToThread(&threadDraw);
+    timerSerial.moveToThread(&threadSerial);
 }
 
 
@@ -193,6 +199,7 @@ void MainWindow::on_drawB_clicked()
             QMessageBox::information(this, "Drawing", "New");
 
             threadDraw.start();
+            threadSerial.start();
 
             //style button
             ui->closeBForce->setEnabled(false);
@@ -213,14 +220,19 @@ void MainWindow::on_drawB_clicked()
 
 void MainWindow::clockDraw()
 {
+    Graphic.replot();
+}
+
+void MainWindow::clockSerial()
+{
     Graphic.Add(x, x * x);
     x += 1;
 }
 
-
 void MainWindow::on_stopDB_clicked()
 {
     timerDraw.stop();
+    timerSerial.stop();
 
     //style button
     ui->closeBForce->setEnabled(true);
@@ -239,5 +251,11 @@ void MainWindow::finishGraphThread()
 {
     threadDraw.quit();
     threadDraw.wait();
+}
+
+void MainWindow::finishSerialThread()
+{
+    threadSerial.quit();
+    threadSerial.wait();
 }
 

@@ -36,5 +36,14 @@ void graphic::Add(double l, double f)
     //plot->data()->set(Dots, true);
 
     plot->data()->add(recentData);
+}
+
+void graphic::replot()
+{
     Graphic->replot();
+}
+
+void graphic::clear()
+{
+    Graphic->clearGraphs();
 }
