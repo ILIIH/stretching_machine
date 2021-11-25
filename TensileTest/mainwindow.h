@@ -46,6 +46,7 @@ private slots:
 
     void clockDraw();
 
+
     void clockSerials();
 
     void on_stopDB_clicked();

@@ -18,6 +18,7 @@ public:
     void setQCustomPlot(QCustomPlot *Graphic);  //method for determing Graphic and plot
     void Add(double l, double f);   //add a new dot to Dots and display one
     void Replot();
+    void clear();
 };
 
 #endif // GRAPHIC_H

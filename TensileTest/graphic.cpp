@@ -42,3 +42,8 @@ void graphic::Replot()
 {
     Graphic->replot();
 }
+
+void graphic::clear()
+{
+    Graphic->clearGraphs();
+}
