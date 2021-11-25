@@ -24,17 +24,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comLForce->addItems(portList);
     ui->comLLength->addItems(portList);
 
-    timerDraw.setFrequancy(1000);
-    connect(&threadDraw, &QThread::started, &timerDraw, &Timer::start);
-    connect(&timerDraw, &Timer::process, this, &MainWindow::clockDraw);
-    connect(&timerDraw, &Timer::finished, this, &MainWindow::finishGraphThread);
-
-    timerDraw.moveToThread(&threadDraw);
+    //connect
+    connect(timerDraw, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockDraw);
+    connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
 }
 
 
 MainWindow::~MainWindow()
 {
+    //delete timerDraw;
     delete ui;
 }
 
@@ -192,7 +190,8 @@ void MainWindow::on_drawB_clicked()
         {
             QMessageBox::information(this, "Drawing", "New");
 
-            threadDraw.start();
+            timerDraw->startTimer(1000);
+            timerSerials->startTimer(100);
 
             //style button
             ui->closeBForce->setEnabled(false);
@@ -213,6 +212,11 @@ void MainWindow::on_drawB_clicked()
 
 void MainWindow::clockDraw()
 {
+    Graphic.Replot();
+}
+
+void MainWindow::clockSerials()
+{
     Graphic.Add(x, x * x);
     x += 1;
 }
@@ -220,7 +224,8 @@ void MainWindow::clockDraw()
 
 void MainWindow::on_stopDB_clicked()
 {
-    timerDraw.stop();
+    timerDraw->stopTimer();
+    timerSerials->stopTimer();
 
     //style button
     ui->closeBForce->setEnabled(true);
@@ -232,12 +237,4 @@ void MainWindow::on_stopDB_clicked()
 
 
 //THREADS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-void MainWindow::finishGraphThread()
-{
-    threadDraw.quit();
-    threadDraw.wait();
-}
 

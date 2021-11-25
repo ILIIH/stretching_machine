@@ -36,5 +36,9 @@ void graphic::Add(double l, double f)
     //plot->data()->set(Dots, true);
 
     plot->data()->add(recentData);
+}
+
+void graphic::Replot()
+{
     Graphic->replot();
 }

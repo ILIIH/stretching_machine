@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[14];
-    char stringdata0[244];
+    char stringdata0[239];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,8 +44,8 @@ QT_MOC_LITERAL(8, 136, 16), // "on_drawB_clicked"
 QT_MOC_LITERAL(9, 153, 19), // "on_radioNew_clicked"
 QT_MOC_LITERAL(10, 173, 24), // "on_radioExisting_clicked"
 QT_MOC_LITERAL(11, 198, 9), // "clockDraw"
-QT_MOC_LITERAL(12, 208, 17), // "finishGraphThread"
-QT_MOC_LITERAL(13, 226, 17) // "on_stopDB_clicked"
+QT_MOC_LITERAL(12, 208, 12), // "clockSerials"
+QT_MOC_LITERAL(13, 221, 17) // "on_stopDB_clicked"
 
     },
     "MainWindow\0on_addDot_clicked\0\0"
@@ -53,8 +53,7 @@ QT_MOC_LITERAL(13, 226, 17) // "on_stopDB_clicked"
     "on_openBLength_clicked\0on_closeBForce_clicked\0"
     "on_closeBLength_clicked\0on_drawB_clicked\0"
     "on_radioNew_clicked\0on_radioExisting_clicked\0"
-    "clockDraw\0finishGraphThread\0"
-    "on_stopDB_clicked"
+    "clockDraw\0clockSerials\0on_stopDB_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -118,7 +117,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->on_radioNew_clicked(); break;
         case 8: _t->on_radioExisting_clicked(); break;
         case 9: _t->clockDraw(); break;
-        case 10: _t->finishGraphThread(); break;
+        case 10: _t->clockSerials(); break;
         case 11: _t->on_stopDB_clicked(); break;
         default: ;
         }

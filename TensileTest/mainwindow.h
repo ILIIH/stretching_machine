@@ -9,7 +9,7 @@
 
 #include <serialports.h>
 
-#include <timer.h>
+#include <threadedtimer.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -46,7 +46,7 @@ private slots:
 
     void clockDraw();
 
-    void finishGraphThread();
+    void clockSerials();
 
     void on_stopDB_clicked();
 
@@ -57,8 +57,9 @@ private:
     SerialPorts Force, Length;
     QList<QString> portList, usedPorts;
 
-    QThread threadDraw;
-    Timer timerDraw;
+    //Threads
+    ThreadedTimer* timerDraw = new ThreadedTimer;
+    ThreadedTimer* timerSerials = new ThreadedTimer;
 
     double x = 0;
 };
