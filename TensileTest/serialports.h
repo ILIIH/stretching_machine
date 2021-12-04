@@ -1,6 +1,7 @@
 #ifndef SERIALPORTS_H
 #define SERIALPORTS_H
 
+#include <cmath>
 #include <QObject>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
@@ -11,8 +12,9 @@ class SerialPorts : public QObject
     QSerialPort *serial;
 
     QString name;
-    int index;
     bool conection = false;
+
+    double lastResult = 0;
 public:
     SerialPorts();
     SerialPorts(QString);
@@ -28,10 +30,9 @@ public:
     void switchConection();
     const bool getConection();
     const QString getName();
-    const int getIndex();
 
 public slots:
-    void run(); // Метод с полезной нагрузкой, который может выполняться в цикле
+    double getSeria(); // Метод с полезной нагрузкой, который может выполняться в цикле
 
 signals:
    // void finished();    // Сигнал, по которому будем завершать поток, после завершения метода run

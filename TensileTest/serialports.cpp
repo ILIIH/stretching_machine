@@ -75,18 +75,32 @@ const QString SerialPorts::getName()
     return name;
 }
 
-const int SerialPorts::getIndex()
-{
-    return index;
-}
-
-void SerialPorts::run()
+double SerialPorts::run()
 {
     QString ba1;
-    ba1 = serial->readAll();
-    ba1 = ba1.mid(1, 7);
+    double result;
+    try
+    {
+        ba1 = serial->readLine();
+        ba1 = ba1.mid(1, 7);
 
-    emit recievedData(ba1);
+        try
+        {
+            result = abs(ba1.toDouble());
+        }
+        catch (QString error) {
+            result = lastResult;
+        }
+    }
+    catch(QString error)
+    {
+        result = lastResult;
+    }
+
+    lastResult = result;
+
+    return result;
+
 }
 
 

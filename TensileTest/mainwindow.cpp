@@ -190,6 +190,13 @@ void MainWindow::on_drawB_clicked()
         {
             QMessageBox::information(this, "Drawing", "New");
 
+            //serials
+            Length.addPort();
+            Length.portOpen();
+            Force.addPort();
+            Force.portOpen();
+
+            //timers
             timerDraw->startTimer(1000);
             timerSerials->startTimer(100);
 
@@ -217,13 +224,19 @@ void MainWindow::clockDraw()
 
 void MainWindow::clockSerials()
 {
-    Graphic.Add(x, x * x);
-    x += 1;
+    double l = Length.getSeria();
+    double f = Force.getSeria();
+    Graphic.Add(l, f);
 }
 
 
 void MainWindow::on_stopDB_clicked()
 {
+    //serials
+    Force.portClose();
+    Length.portClose();
+
+    //timers
     timerDraw->stopTimer();
     timerSerials->stopTimer();
 
@@ -237,4 +250,3 @@ void MainWindow::on_stopDB_clicked()
 
 
 //THREADS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-

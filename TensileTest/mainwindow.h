@@ -62,6 +62,6 @@ private:
     ThreadedTimer* timerDraw = new ThreadedTimer;
     ThreadedTimer* timerSerials = new ThreadedTimer;
 
-    double x = 0;
+    const double lengthSample = 0;
 };
 #endif // MAINWINDOW_H
