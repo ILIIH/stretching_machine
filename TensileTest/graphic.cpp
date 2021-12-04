@@ -45,5 +45,6 @@ void graphic::Replot()
 
 void graphic::clear()
 {
-    Graphic->clearGraphs();
+    Graphic->clearPlottables();
+    this->plot = new QCPCurve(this->Graphic->xAxis, this->Graphic->yAxis);
 }

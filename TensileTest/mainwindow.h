@@ -40,14 +40,16 @@ private slots:
 
     void on_drawB_clicked();    //button for drawing
 
-    //to determ whether existing or realtime date
+    //to determ whether we recieve existing or realtime data
     void on_radioNew_clicked();
 
     void on_radioExisting_clicked();
 
     void clockDraw(); //function for drawing the graph
 
-    void clockSerials();    //function for recieving the date
+    void clockSerials();    //function for recieving the data
+
+    void clockExistingData();   //function for drawing from db
 
     void on_stopDB_clicked();   //function for stoping all QTimers
 
@@ -68,7 +70,11 @@ private:
     ThreadedTimer* timerDraw = new ThreadedTimer;
     ThreadedTimer* timerSerials = new ThreadedTimer;
 
-    //others
+    //Timers
+    QTimer* graphFromDB;
+
+    //Others
     const double lengthSample = 0;
+    double x = 0;
 };
 #endif // MAINWINDOW_H

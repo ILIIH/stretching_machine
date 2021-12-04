@@ -29,10 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comLForce->addItems(portList);
     ui->comLLength->addItems(portList);
 
+    //Timers
+    graphFromDB = new QTimer();
+
     //connect
     connect(setting, &Settings::Open, this, &MainWindow::show);
     connect(timerDraw, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockDraw);
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
+    connect(graphFromDB, &QTimer::timeout, this, &MainWindow::clockExistingData);
 }
 
 
@@ -183,7 +187,7 @@ void MainWindow::on_radioExisting_clicked()
 
 void MainWindow::on_drawB_clicked()
 {
-    if (ui->radioNew->isCheckable())
+    if (ui->radioNew->isChecked())
     {
         if(Force.getConection() && Length.getConection())
         {
@@ -213,6 +217,13 @@ void MainWindow::on_drawB_clicked()
     else
     {
         QMessageBox::information(this, "Drawing", "Existing");
+
+        //Timer
+        graphFromDB->start(100);
+
+        //style button
+        ui->drawB->setEnabled(false);
+        ui->stopDB->setEnabled(true);
     }
 }
 
@@ -228,22 +239,48 @@ void MainWindow::clockSerials()
     Graphic.Add(l, f);
 }
 
+void MainWindow::clockExistingData()
+{
+    Graphic.Add(x, x * x);
+    x += 1;
+    //Graphic.clear();
+    Graphic.Replot();
+}
+
 
 void MainWindow::on_stopDB_clicked()
 {
-    //serials
-    Force.portClose();
-    Length.portClose();
+    if (ui->radioNew->isChecked())
+    {
+        //serials
+        Force.portClose();
+        Length.portClose();
 
-    //timers
-    timerDraw->stopTimer();
-    timerSerials->stopTimer();
+        //timers
+        timerDraw->stopTimer();
+        timerSerials->stopTimer();
 
-    //style button
-    ui->closeBForce->setEnabled(true);
-    ui->closeBLength->setEnabled(true);
-    ui->drawB->setEnabled(true);
-    ui->stopDB->setEnabled(false);
+        //graph
+        Graphic.clear();
+
+        //style button
+        ui->closeBForce->setEnabled(true);
+        ui->closeBLength->setEnabled(true);
+        ui->drawB->setEnabled(true);
+        ui->stopDB->setEnabled(false);
+    }
+    else
+    {
+        //Timer
+        graphFromDB->stop();
+
+        //graph
+        Graphic.clear();
+
+        //style button
+        ui->drawB->setEnabled(true);
+        ui->stopDB->setEnabled(false);
+    }
 }
 
 
