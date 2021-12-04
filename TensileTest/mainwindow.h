@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <settings.h>
 #include <QMainWindow>
 #include <QThread>
 #include <QMessageBox>
@@ -51,8 +52,12 @@ private slots:
 
     void on_stopDB_clicked();
 
+    void on_clickTheSettings_triggered();
+
 private:
     Ui::MainWindow *ui;
+
+    Settings* setting;
 
     graphic Graphic;
     SerialPorts Force, Length;

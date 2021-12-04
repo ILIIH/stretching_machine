@@ -3,14 +3,14 @@
 SerialPorts::SerialPorts()
 {
     serial = new QSerialPort(this);
-    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::run);
+    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
 }
 
 SerialPorts::SerialPorts(QString name)
 {
     this->name = name;
     serial = new QSerialPort(this);
-    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::run);
+    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
 }
 
 SerialPorts::~SerialPorts()
@@ -33,15 +33,14 @@ void SerialPorts::portSettings()
     serial->setFlowControl(QSerialPort::NoFlowControl);
 }
 
-void SerialPorts::setName(QString name, int index)
+void SerialPorts::setName(QString name)
 {
     this->name = name;
-    this->index = index;
 }
 
-void SerialPorts::changePort(QString name, int index)
+void SerialPorts::changePort(QString name)
 {
-    setName(name, index);
+    setName(name);
     serial->setPortName(this->name);
 }
 
@@ -75,7 +74,7 @@ const QString SerialPorts::getName()
     return name;
 }
 
-double SerialPorts::run()
+double SerialPorts::getSeria()
 {
     QString ba1;
     double result;

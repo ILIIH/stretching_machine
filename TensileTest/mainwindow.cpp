@@ -10,8 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Tensile-Test");
 
+    //Windows
+    setting = new Settings;
+
+    //Graphic
     Graphic.setQCustomPlot(ui->wGraphic);
 
+    //Com Ports
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
     {
         QSerialPort port;
@@ -25,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comLLength->addItems(portList);
 
     //connect
+    connect(setting, &Settings::Open, this, &MainWindow::show);
     connect(timerDraw, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockDraw);
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
 }
@@ -65,7 +71,7 @@ void MainWindow::comBox()
 void MainWindow::on_openBForce_clicked()
 {
     QString name = ui->comLForce->currentText();
-    int index = ui->comLForce->currentIndex();
+    //int index = ui->comLForce->currentIndex();
 
     portList.removeOne(name);
     usedPorts.append(name);
@@ -83,14 +89,14 @@ void MainWindow::on_openBForce_clicked()
     ui->labelConditionForce->setStyleSheet("color: rgb(0, 170, 0)");
 
     //serial
-    Force.setName(name, index);
+    Force.setName(name);
     Force.switchConection();
 }
 
 void MainWindow::on_openBLength_clicked()
 {
     QString name = ui->comLLength->currentText();
-    int index = ui->comLLength->currentIndex();
+    //int index = ui->comLLength->currentIndex();
 
     portList.removeOne(name);
     usedPorts.append(name);
@@ -108,7 +114,7 @@ void MainWindow::on_openBLength_clicked()
     ui->labelConditionLength->setStyleSheet("color: rgb(0, 170, 0)");
 
     //serial
-    Length.setName(name, index);
+    Length.setName(name);
     Length.switchConection();
 }
 
@@ -249,4 +255,11 @@ void MainWindow::on_stopDB_clicked()
 
 
 
-//THREADS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//FOLLOWTHELINK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+void MainWindow::on_clickTheSettings_triggered()
+{
+    setting->show();
+    this->close();
+}

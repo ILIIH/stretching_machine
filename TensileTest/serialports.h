@@ -22,8 +22,8 @@ public:
 
     void addPort();
     void portSettings();
-    void setName(QString, int);
-    void changePort(QString, int);
+    void setName(QString);
+    void changePort(QString);
     void portOpen();
     void portClose();
     void writeData(QString);

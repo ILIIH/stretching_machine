@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SerialPorts_t {
     QByteArrayData data[4];
-    char stringdata0[30];
+    char stringdata0[35];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,10 @@ static const qt_meta_stringdata_SerialPorts_t qt_meta_stringdata_SerialPorts = {
 QT_MOC_LITERAL(0, 0, 11), // "SerialPorts"
 QT_MOC_LITERAL(1, 12, 12), // "recievedData"
 QT_MOC_LITERAL(2, 25, 0), // ""
-QT_MOC_LITERAL(3, 26, 3) // "run"
+QT_MOC_LITERAL(3, 26, 8) // "getSeria"
 
     },
-    "SerialPorts\0recievedData\0\0run"
+    "SerialPorts\0recievedData\0\0getSeria"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +65,7 @@ static const uint qt_meta_data_SerialPorts[] = {
     QMetaType::Void, QMetaType::QString,    2,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Double,
 
        0        // eod
 };
@@ -77,7 +77,8 @@ void SerialPorts::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->recievedData((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->run(); break;
+        case 1: { double _r = _t->getSeria();
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
