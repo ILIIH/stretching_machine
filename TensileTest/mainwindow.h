@@ -27,10 +27,9 @@ public:
 
 private slots:
 
-    void on_addDot_clicked();
-
     void serialRecieve();
 
+    //com ports
     void on_openBForce_clicked();
 
     void on_openBLength_clicked();
@@ -39,26 +38,28 @@ private slots:
 
     void on_closeBLength_clicked();
 
-    void on_drawB_clicked();
+    void on_drawB_clicked();    //button for drawing
 
+    //to determ whether existing or realtime date
     void on_radioNew_clicked();
 
     void on_radioExisting_clicked();
 
-    void clockDraw();
+    void clockDraw(); //function for drawing the graph
 
+    void clockSerials();    //function for recieving the date
 
-    void clockSerials();
+    void on_stopDB_clicked();   //function for stoping all QTimers
 
-    void on_stopDB_clicked();
-
-    void on_clickTheSettings_triggered();
+    void on_clickTheSettings_triggered();   //follow the settings
 
 private:
     Ui::MainWindow *ui;
 
+    //widgets
     Settings* setting;
 
+    //graphic and ports
     graphic Graphic;
     SerialPorts Force, Length;
     QList<QString> portList, usedPorts;
@@ -67,6 +68,7 @@ private:
     ThreadedTimer* timerDraw = new ThreadedTimer;
     ThreadedTimer* timerSerials = new ThreadedTimer;
 
+    //others
     const double lengthSample = 0;
 };
 #endif // MAINWINDOW_H

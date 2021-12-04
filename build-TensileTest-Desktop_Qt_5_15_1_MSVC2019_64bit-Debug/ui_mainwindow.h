@@ -110,17 +110,6 @@ public:
     QPushButton *drawB;
     QPushButton *stopDB;
     QCustomPlot *wGraphic;
-    QGroupBox *groupBox_4;
-    QHBoxLayout *horizontalLayout_15;
-    QVBoxLayout *verticalLayout_9;
-    QSplitter *splitter_4;
-    QSplitter *splitter_2;
-    QLabel *label;
-    QLineEdit *length;
-    QSplitter *splitter_3;
-    QLabel *label_2;
-    QLineEdit *force;
-    QPushButton *addDot;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QToolBar *toolBar;
@@ -488,49 +477,6 @@ public:
 
         verticalLayout_11->addLayout(verticalLayout_10);
 
-        groupBox_4 = new QGroupBox(centralwidget);
-        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        horizontalLayout_15 = new QHBoxLayout(groupBox_4);
-        horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
-        verticalLayout_9 = new QVBoxLayout();
-        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        splitter_4 = new QSplitter(groupBox_4);
-        splitter_4->setObjectName(QString::fromUtf8("splitter_4"));
-        splitter_4->setOrientation(Qt::Horizontal);
-        splitter_2 = new QSplitter(splitter_4);
-        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
-        splitter_2->setOrientation(Qt::Vertical);
-        label = new QLabel(splitter_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        splitter_2->addWidget(label);
-        length = new QLineEdit(splitter_2);
-        length->setObjectName(QString::fromUtf8("length"));
-        splitter_2->addWidget(length);
-        splitter_4->addWidget(splitter_2);
-        splitter_3 = new QSplitter(splitter_4);
-        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
-        splitter_3->setOrientation(Qt::Vertical);
-        label_2 = new QLabel(splitter_3);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        splitter_3->addWidget(label_2);
-        force = new QLineEdit(splitter_3);
-        force->setObjectName(QString::fromUtf8("force"));
-        splitter_3->addWidget(force);
-        splitter_4->addWidget(splitter_3);
-
-        verticalLayout_9->addWidget(splitter_4);
-
-        addDot = new QPushButton(groupBox_4);
-        addDot->setObjectName(QString::fromUtf8("addDot"));
-
-        verticalLayout_9->addWidget(addDot);
-
-
-        horizontalLayout_15->addLayout(verticalLayout_9);
-
-
-        verticalLayout_11->addWidget(groupBox_4);
-
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -586,12 +532,6 @@ public:
         radioExisting->setText(QCoreApplication::translate("MainWindow", "Existing", nullptr));
         drawB->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         stopDB->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
-        groupBox_4->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "length", nullptr));
-        length->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "force", nullptr));
-        force->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        addDot->setText(QCoreApplication::translate("MainWindow", "add a dot", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

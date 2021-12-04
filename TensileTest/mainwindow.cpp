@@ -42,13 +42,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_addDot_clicked()
-{
-    double l = ui->length->text().toDouble();
-    double f = ui->force->text().toDouble();
-    Graphic.Add(l, f);
-}
-
 void MainWindow::serialRecieve()
 {
 
