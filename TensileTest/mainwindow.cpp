@@ -37,6 +37,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timerDraw, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockDraw);
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
     connect(graphFromDB, &QTimer::timeout, this, &MainWindow::clockExistingData);
+
+    /*
+        Nikita 1
+
+        comboBoxes (comSeries, comExperiment)
+
+    */
 }
 
 
@@ -177,6 +184,14 @@ void MainWindow::on_radioExisting_clicked()
 
     //another widget
     ui->lineSeries->setEnabled(false);
+
+    /*
+
+      Nikita 3
+
+      updaiting comboBox (comSeries)
+
+    */
 }
 
 
@@ -187,9 +202,10 @@ void MainWindow::on_radioExisting_clicked()
 
 void MainWindow::on_drawB_clicked()
 {
+    drawingTime = 0;
     if (ui->radioNew->isChecked())
     {
-        if(Force.getConection() && Length.getConection())
+        if (Force.getConection() && Length.getConection())
         {
             QMessageBox::information(this, "Drawing", "New");
 
@@ -208,6 +224,15 @@ void MainWindow::on_drawB_clicked()
             ui->closeBLength->setEnabled(false);
             ui->drawB->setEnabled(false);
             ui->stopDB->setEnabled(true);
+
+            /*
+
+              Nikita 6
+
+              IF + COUNT + SELECT for checking whether serial exists
+              INSERT (a new Seria)
+
+            */
         }
         else
         {
@@ -237,14 +262,40 @@ void MainWindow::clockSerials()
     double l = Length.getSeria();
     double f = Force.getSeria();
     Graphic.Add(l, f);
+
+    /*
+
+      Nikita 5
+
+      INSERT (a new experiment)
+
+    */
+
+    //Widget
+    ui->lcdN->display(drawingTime);
+    drawingTime += 0.1;
 }
 
 void MainWindow::clockExistingData()
 {
+
+    /*
+
+      Nikita 2
+
+      We get the data from db and draw every row (...->next())
+      it updates every 0.1s
+
+    */
+
     Graphic.Add(x, x * x);
     x += 1;
     //Graphic.clear();
     Graphic.Replot();
+
+    //Widget
+    ui->lcdN->display(drawingTime);
+    drawingTime += 0.1;
 }
 
 

@@ -20,14 +20,12 @@ class ThreadedTimer : public QObject
     signals:
         void stopTimer();
         void startTimer(int msec);
+        void signalForMainWindow();
 
     public slots:
 
         void dataTimerFunction();
         void exit();
-
-    signals:
-        void signalForMainWindow();
 };
 
 #endif // THREADEDTIMER_H
