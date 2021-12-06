@@ -38,12 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
     connect(graphFromDB, &QTimer::timeout, this, &MainWindow::clockExistingData);
 
-    /*
-        Nikita 1
-
-        comboBoxes (comSeries, comExperiment)
-
-    */
+    db = new QSqlDatabase();
 }
 
 
@@ -185,13 +180,11 @@ void MainWindow::on_radioExisting_clicked()
     //another widget
     ui->lineSeries->setEnabled(false);
 
-    /*
-
-      Nikita 3
-
-      updaiting comboBox (comSeries)
-
-    */
+    QSqlQuery qData = db.getSeriesNames();
+    while(qData.next())
+    {
+        ui->comSeries->addItem(qData.value(0).toString());
+    }
 }
 
 
@@ -225,14 +218,13 @@ void MainWindow::on_drawB_clicked()
             ui->drawB->setEnabled(false);
             ui->stopDB->setEnabled(true);
 
-            /*
+            QString currentSeriesName = ui->lineSeries->text();
 
-              Nikita 6
-
-              IF + COUNT + SELECT for checking whether serial exists
-              INSERT (a new Seria)
-
-            */
+            if(!db->hasSeries(currentSeriesName))
+            {
+                currentSeriesNum = db->countSeries() + 1;
+                db->createSeries(currentSeriesNum, currentSeries/* I need more lineEdits to obtain all the needed info */);
+            }
         }
         else
         {
@@ -263,13 +255,7 @@ void MainWindow::clockSerials()
     double f = Force.getSeria();
     Graphic.Add(l, f);
 
-    /*
-
-      Nikita 5
-
-      INSERT (a new experiment)
-
-    */
+    db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // drawing time?
 
     //Widget
     ui->lcdN->display(drawingTime);
