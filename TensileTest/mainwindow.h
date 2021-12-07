@@ -14,6 +14,9 @@
 
 #include <vfd.h>
 
+#include <dbconnector.h>
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -111,16 +114,13 @@ private:
     QTimer* graphFromDB;
 
     //Others
-    int indexLastExperiment;
+    int currentExperiment;
+    int currentSeriesNum;
     double drawingTime;
     const double lengthSample = 0;
     double x = 0;
 
-    /*
-        Nikita 4
+    DBConnector *db;
 
-        class for db
-
-    */
 };
 #endif // MAINWINDOW_H

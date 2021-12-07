@@ -1,4 +1,4 @@
-QT       += core gui printsupport serialport
+QT       += core gui printsupport sql serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +17,7 @@ SOURCES += \
     settings.cpp \
     threadedtimer.cpp \
     vfd.cpp
+    dbconnector.cpp
 
 HEADERS += \
     graphic.h \
@@ -26,6 +27,7 @@ HEADERS += \
     settings.h \
     threadedtimer.h \
     vfd.h
+    dbconnector.h
 
 FORMS += \
     mainwindow.ui \
