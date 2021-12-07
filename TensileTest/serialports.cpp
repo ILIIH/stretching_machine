@@ -33,6 +33,16 @@ void SerialPorts::portSettings()
     serial->setFlowControl(QSerialPort::NoFlowControl);
 }
 
+//void SerialPorts::portSettings(int a)
+//{
+//    a+=a;
+//    serial->setBaudRate(QSerialPort::Baud9600);
+//    serial->setDataBits(QSerialPort::Data7);
+//    serial->setParity(QSerialPort::NoParity);
+//    serial->setStopBits(QSerialPort::TwoStop);
+//    serial->setFlowControl(QSerialPort::NoFlowControl);
+//}
+
 void SerialPorts::setName(QString name)
 {
     this->name = name;

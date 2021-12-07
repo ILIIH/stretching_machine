@@ -491,18 +491,16 @@
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
-                 <widget class="QLabel" name="labelForce">
-                  <property name="font">
-                   <font>
-                    <family>Agency FB</family>
-                    <pointsize>14</pointsize>
-                   </font>
-                  </property>
+                 <widget class="QPushButton" name="forwardButton">
                   <property name="text">
-                   <string>Force:</string>
+                   <string>forward</string>
                   </property>
                  </widget>
-                 <widget class="QDoubleSpinBox" name="spinForce"/>
+                 <widget class="QPushButton" name="reverseButton">
+                  <property name="text">
+                   <string>reverse</string>
+                  </property>
+                 </widget>
                 </widget>
                </item>
                <item>
@@ -603,7 +601,7 @@
      <x>0</x>
      <y>0</y>
      <width>993</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

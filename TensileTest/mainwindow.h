@@ -12,6 +12,8 @@
 
 #include <threadedtimer.h>
 
+#include <vfd.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,6 +26,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     void comBox();
     ~MainWindow();
+
+    //vfd
+    void portSettings();
+    int lrcCount(QByteArray);
+    void readAnswer();
+    void forward();
+    void reverse();
+    void run();
+    void stop();
+    //vfd
+
 
 private slots:
 
@@ -63,8 +76,10 @@ private:
 
     //graphic and ports
     graphic Graphic;
-    SerialPorts Force, Length, VFD; //Vera. Обязательно используй setName, addPort и portOpen для VFD
+    SerialPorts Force, Length; //Vera. Обязательно используй setName, addPort и portOpen для VFD
     QList<QString> portList, usedPorts; //Vera. Используй эти массивы для свободных и активных ком портов, а после обновляй comboBox (comLForce, comLLength)
+
+    vfd VFD;
 
     /*
 

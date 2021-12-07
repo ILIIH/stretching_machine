@@ -15,7 +15,8 @@ SOURCES += \
     qcustomplot.cpp \
     serialports.cpp \
     settings.cpp \
-    threadedtimer.cpp
+    threadedtimer.cpp \
+    vfd.cpp
 
 HEADERS += \
     graphic.h \
@@ -23,7 +24,8 @@ HEADERS += \
     qcustomplot.h \
     serialports.h \
     settings.h \
-    threadedtimer.h
+    threadedtimer.h \
+    vfd.h
 
 FORMS += \
     mainwindow.ui \

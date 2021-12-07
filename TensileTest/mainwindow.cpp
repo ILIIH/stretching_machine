@@ -38,12 +38,21 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
     connect(graphFromDB, &QTimer::timeout, this, &MainWindow::clockExistingData);
 
+    //vfd
+    connect(ui->forwardButton, &QPushButton::clicked, &VFD, &vfd::forward);
+    connect(ui->reverseButton, &QPushButton::clicked, &VFD, &vfd::reverse);
     /*
         Nikita 1
 
         comboBoxes (comSeries, comExperiment)
 
     */
+
+
+
+    ui->spinFrequency->setRange(0, 599);
+    ui->spinFrequency->setSingleStep(5);
+    ui->spinFrequency->setSuffix(" Hz");
 }
 
 
@@ -57,7 +66,6 @@ void MainWindow::serialRecieve()
 {
 
 }
-
 
 
 //PLUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -202,6 +210,12 @@ void MainWindow::on_radioExisting_clicked()
 
 void MainWindow::on_drawB_clicked()
 {
+    //vfd
+    VFD.run();
+    VFD.setFrequency(ui->spinFrequency->value());
+    //vfd
+
+
     drawingTime = 0;
     if (ui->radioNew->isChecked())
     {
@@ -301,6 +315,10 @@ void MainWindow::clockExistingData()
 
 void MainWindow::on_stopDB_clicked()
 {
+    //vfd
+    VFD.stop();
+    //vfd
+
     if (ui->radioNew->isChecked())
     {
         //serials
