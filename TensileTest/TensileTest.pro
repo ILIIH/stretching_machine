@@ -16,6 +16,7 @@ SOURCES += \
     serialports.cpp \
     settings.cpp \
     threadedtimer.cpp \
+    vfd.cpp
     dbconnector.cpp
 
 HEADERS += \
@@ -25,6 +26,7 @@ HEADERS += \
     serialports.h \
     settings.h \
     threadedtimer.h \
+    vfd.h
     dbconnector.h
 
 FORMS += \

@@ -22,6 +22,7 @@ public:
 
     void addPort();
     void portSettings();
+    //void portSettings(int a); // vfd - drugie port settings
     void setName(QString);
     void changePort(QString);
     void portOpen();
