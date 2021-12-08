@@ -238,7 +238,7 @@ void MainWindow::on_drawB_clicked()
             if(!db->hasSeries(currentSeriesName))
             {
                 currentSeriesNum = db->countSeries() + 1;
-                //db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
+                db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
             }
         }
         else
