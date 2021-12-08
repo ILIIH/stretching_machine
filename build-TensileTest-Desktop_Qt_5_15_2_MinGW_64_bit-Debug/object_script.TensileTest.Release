@@ -6,6 +6,7 @@ release/serialports.o
 release/settings.o
 release/threadedtimer.o
 release/vfd.o
+release/dbconnector.o
 release/moc_mainwindow.o
 release/moc_qcustomplot.o
 release/moc_serialports.o

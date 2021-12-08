@@ -6,6 +6,7 @@ debug/serialports.o
 debug/settings.o
 debug/threadedtimer.o
 debug/vfd.o
+debug/dbconnector.o
 debug/moc_mainwindow.o
 debug/moc_qcustomplot.o
 debug/moc_serialports.o
