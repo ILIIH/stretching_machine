@@ -46,12 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
       
     ui->spinFrequency->setRange(0, 599);
     ui->spinFrequency->setSingleStep(5);
-    ui->spinFrequency->setSuffix(" Hz");
-
-      
+    ui->spinFrequency->setSuffix(" Hz"); 
       
     db = new QSqlDatabase();
-
 }
 
 
@@ -283,14 +280,17 @@ void MainWindow::clockSerials()
 void MainWindow::clockExistingData()
 {
 
-    /*
+    QSqlQuery data = db->getData(currentSeriesNum, currentExperiment, drawingTime);
 
-      Nikita 2
-
-      We get the data from db and draw every row (...->next())
-      it updates every 0.1s
-
-    */
+    if(data.next()) //OK
+    {
+        F = data.value(0).toDouble();
+        delta_l = data.value(1).toDouble();
+    }
+    else
+    {
+        // not OK
+    }
 
     Graphic.Add(x, x * x);
     x += 1;

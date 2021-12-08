@@ -94,3 +94,14 @@ int DBConnector::countSeries()
 
     return query->value(0).toInt();
 }
+
+QSqlQuery DBConnector::getData(int seriesNum, int experimentNum, double time)
+{
+    query->prepare("SELECT F, delta_l FROM  experiment_data WHERE series_num = ? AND experiment_num = ? AND time = ?");
+    query->addBindValue(seriesNum);
+    query->addBindValue(experimentNum);
+    query->addBindValue(time);
+    query->exec();
+
+    return *query;
+}
