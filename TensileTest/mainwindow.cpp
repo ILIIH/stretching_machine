@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->spinFrequency->setSingleStep(5);
     ui->spinFrequency->setSuffix(" Hz"); 
       
-    db = new QSqlDatabase();
+    db = new DBConnector();
 }
 
 
@@ -189,7 +189,7 @@ void MainWindow::on_radioExisting_clicked()
     //another widget
     ui->lineSeries->setEnabled(false);
 
-    QSqlQuery qData = db.getSeriesNames();
+    QSqlQuery qData = db->getSeriesNames();
     while(qData.next())
     {
         ui->comSeries->addItem(qData.value(0).toString());
@@ -238,7 +238,7 @@ void MainWindow::on_drawB_clicked()
             if(!db->hasSeries(currentSeriesName))
             {
                 currentSeriesNum = db->countSeries() + 1;
-                db->createSeries(currentSeriesNum, currentSeries/* I need more lineEdits to obtain all the needed info */);
+                db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
             }
         }
         else
