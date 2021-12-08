@@ -60,7 +60,7 @@ void DBConnector::deleteSeries(int seriesNum)
     query->addBindValue(seriesNum);
 }
 
-void DBConnector::getSeriesNames()
+QSqlQuery DBConnector::getSeriesNames()
 {
     query->prepare("SELECT series_name FROM  experiment_info");
     query->exec();

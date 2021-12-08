@@ -284,8 +284,8 @@ void MainWindow::clockExistingData()
 
     if(data.next()) //OK
     {
-        F = data.value(0).toDouble();
-        delta_l = data.value(1).toDouble();
+        double F = data.value(0).toDouble();
+        double delta_l = data.value(1).toDouble();
     }
     else
     {
