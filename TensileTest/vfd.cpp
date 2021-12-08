@@ -122,6 +122,16 @@ void vfd::setFrequency(int frq)
 
 }
 
+void vfd::setName(QString name)
+{
+    port->setPortName(name);
+}
+
+QString vfd::getName()
+{
+    return port->portName();
+}
+
 
 
 

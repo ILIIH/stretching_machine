@@ -20,15 +20,13 @@ public:
     void run();
     void stop();
     void setFrequency(int frq);
+    void setName(QString);
+    QString getName();
 
 public slots:
     void forward();
     void reverse();
 
-//private slots:
-//    void on_pushButton_clicked();
-
-//    void on_pushButton_2_clicked();
 
 private:
 
