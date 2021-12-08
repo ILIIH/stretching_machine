@@ -17,6 +17,7 @@ public:
     QSqlQuery getSeriesNames();
     bool hasSeries(QString name);
     int countSeries();
+    QSqlQuery getData(int seriesNum, int experimentNum, double time);
 };
 
 #endif // DBCONNECTOR_H

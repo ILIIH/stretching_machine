@@ -26,7 +26,7 @@ HEADERS += \
     serialports.h \
     settings.h \
     threadedtimer.h \
-    vfd.h\
+    vfd.h \
     dbconnector.h
 
 FORMS += \
