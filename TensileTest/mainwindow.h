@@ -71,6 +71,10 @@ private slots:
 
     void on_clickTheSettings_triggered();   //follow the settings
 
+    void on_openBFrequency_clicked();
+
+    void on_closeBFrequency_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -118,7 +122,6 @@ private:
     int currentSeriesNum;
     double drawingTime;
     const double lengthSample = 0;
-    double x = 0;
 
     DBConnector *db;
 

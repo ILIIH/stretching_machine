@@ -26,8 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
             portList.append(info.portName());
         }
     }
-    ui->comLForce->addItems(portList);
-    ui->comLLength->addItems(portList);
+    comBox();
 
     //Timers
     graphFromDB = new QTimer();
@@ -64,6 +63,7 @@ void MainWindow::serialRecieve()
 }
 
 
+
 //PLUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -74,6 +74,8 @@ void MainWindow::comBox()
     ui->comLForce->addItems(portList);
     ui->comLLength->clear();
     ui->comLLength->addItems(portList);
+    ui->comLFrequency->clear();
+    ui->comLFrequency->addItems(portList);
 }
 
 void MainWindow::on_openBForce_clicked()
@@ -126,6 +128,30 @@ void MainWindow::on_openBLength_clicked()
     Length.switchConection();
 }
 
+void MainWindow::on_openBFrequency_clicked()
+{
+    QString name = ui->comLFrequency->currentText();
+    //int index = ui->comLLength->currentIndex();
+
+    portList.removeOne(name);
+    usedPorts.append(name);
+
+    comBox();
+
+    //set oportunity to click on the buttons
+    ui->openBFrequency->setEnabled(false);
+    ui->closeBFrequency->setEnabled(true);
+
+    //set style and text of labels
+    ui->labelPortFrequency->setText(name);
+    ui->labelPortFrequency->setStyleSheet("color: rgb(0, 170, 0)");
+    ui->labelConditionFrequency->setText("CONNECTED");
+    ui->labelConditionFrequency->setStyleSheet("color: rgb(0, 170, 0)");
+
+    //serial
+    VFD.setName(name);
+}
+
 void MainWindow::on_closeBForce_clicked()
 {
     usedPorts.removeOne(Force.getName());
@@ -166,6 +192,23 @@ void MainWindow::on_closeBLength_clicked()
     Length.switchConection();
 }
 
+void MainWindow::on_closeBFrequency_clicked()
+{
+    usedPorts.removeOne(VFD.getName());
+    portList.append(VFD.getName());
+
+    comBox();
+
+    //set opportunity to click on the buttons
+    ui->openBFrequency->setEnabled(true);
+    ui->closeBFrequency->setEnabled(false);
+
+    //set style and text of labels
+    ui->labelPortFrequency->setText("None");
+    ui->labelPortFrequency->setStyleSheet("color: rgb(255, 0, 0)");
+    ui->labelConditionFrequency->setText("None");
+    ui->labelConditionFrequency->setStyleSheet("color: rgb(255, 0, 0)");
+}
 
 
 //MODE NEW/EXISTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -233,12 +276,13 @@ void MainWindow::on_drawB_clicked()
             ui->drawB->setEnabled(false);
             ui->stopDB->setEnabled(true);
 
+            //DataBase
             QString currentSeriesName = ui->lineSeries->text();
 
             if(!db->hasSeries(currentSeriesName))
             {
-                currentSeriesNum = db->countSeries() + 1;
-                db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
+                currentSeriesNum = db->countSeries() + 1;   //QString material, int height, int width, int length, QStringList properties
+                //db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
             }
         }
         else
@@ -246,7 +290,7 @@ void MainWindow::on_drawB_clicked()
             QMessageBox::information(this, "CAUTION!!!", "No connection");
         }
     }
-    else
+    else if(ui->radioExisting->isChecked())
     {
         QMessageBox::information(this, "Drawing", "Existing");
 
@@ -256,6 +300,10 @@ void MainWindow::on_drawB_clicked()
         //style button
         ui->drawB->setEnabled(false);
         ui->stopDB->setEnabled(true);
+    }
+    else
+    {
+        QMessageBox::information(this, "CAUTION!!!", "Chose the radiobutton");
     }
 }
 
@@ -270,10 +318,12 @@ void MainWindow::clockSerials()
     double f = Force.getSeria();
     Graphic.Add(l, f);
 
-    db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // drawing time?
+    db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // Nikita: drawing time? Roma: Yes
 
     //Widget
     ui->lcdN->display(drawingTime);
+    ui->CurrentLengthLCD->display(l);
+    ui->CurrentForceLCD->display(f);
     drawingTime += 0.1;
 }
 
@@ -282,23 +332,27 @@ void MainWindow::clockExistingData()
 
     QSqlQuery data = db->getData(currentSeriesNum, currentExperiment, drawingTime);
 
+    double F;
+    double delta_l;
     if(data.next()) //OK
     {
-        double F = data.value(0).toDouble();
-        double delta_l = data.value(1).toDouble();
+        F = data.value(0).toDouble();
+        delta_l = data.value(1).toDouble();
     }
     else
     {
-        // not OK
+        graphFromDB->stop();
     }
 
-    Graphic.Add(x, x * x);
-    x += 1;
+    Graphic.Add(delta_l, F);
+
     //Graphic.clear();
     Graphic.Replot();
 
     //Widget
     ui->lcdN->display(drawingTime);
+    ui->CurrentLengthLCD->display(delta_l);
+    ui->CurrentForceLCD->display(F);
     drawingTime += 0.1;
 }
 

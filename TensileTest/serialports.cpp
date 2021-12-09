@@ -3,14 +3,14 @@
 SerialPorts::SerialPorts()
 {
     serial = new QSerialPort(this);
-    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
+    //connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
 }
 
 SerialPorts::SerialPorts(QString name)
 {
     this->name = name;
     serial = new QSerialPort(this);
-    connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
+    //connect(serial, &QSerialPort::readyRead, this, &SerialPorts::getSeria);
 }
 
 SerialPorts::~SerialPorts()
