@@ -15,7 +15,6 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGroupBox>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -23,7 +22,6 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -38,44 +36,53 @@ class Ui_MainWindow
 public:
     QAction *clickTheSettings;
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout_11;
-    QVBoxLayout *verticalLayout_10;
-    QHBoxLayout *horizontalLayout_14;
+    QVBoxLayout *verticalLayout_2;
+    QSplitter *splitter_36;
+    QSplitter *splitter_35;
     QGroupBox *groupBox;
-    QHBoxLayout *horizontalLayout_11;
-    QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout;
+    QSplitter *splitter_22;
+    QSplitter *splitter_15;
     QLabel *taskForce;
-    QHBoxLayout *horizontalLayout;
+    QSplitter *splitter_2;
     QLabel *portForce;
     QLabel *labelPortForce;
     QComboBox *comLForce;
-    QSpacerItem *horizontalSpacer;
-    QVBoxLayout *verticalLayout_2;
-    QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout_2;
+    QSplitter *splitter_19;
+    QSplitter *splitter_14;
     QLabel *conditionForce;
     QLabel *labelConditionForce;
-    QHBoxLayout *horizontalLayout_3;
+    QSplitter *splitter_16;
     QPushButton *openBForce;
     QPushButton *closeBForce;
-    QHBoxLayout *horizontalLayout_8;
-    QVBoxLayout *verticalLayout_3;
+    QSplitter *splitter_23;
+    QSplitter *splitter_24;
     QLabel *taskLength;
-    QHBoxLayout *horizontalLayout_5;
+    QSplitter *splitter_25;
     QLabel *portLength;
     QLabel *labelPortLength;
     QComboBox *comLLength;
-    QSpacerItem *horizontalSpacer_2;
-    QVBoxLayout *verticalLayout_4;
-    QSpacerItem *verticalSpacer_2;
-    QHBoxLayout *horizontalLayout_6;
+    QSplitter *splitter_26;
+    QSplitter *splitter_27;
     QLabel *conditionLength;
     QLabel *labelConditionLength;
-    QHBoxLayout *horizontalLayout_7;
+    QSplitter *splitter_28;
     QPushButton *openBLength;
     QPushButton *closeBLength;
+    QSplitter *splitter_29;
+    QSplitter *splitter_30;
+    QLabel *taskFrequency;
+    QSplitter *splitter_31;
+    QLabel *portFrequency;
+    QLabel *labelPortFrequency;
+    QComboBox *comLFrequency;
+    QSplitter *splitter_32;
+    QSplitter *splitter_33;
+    QLabel *conditionFrequency;
+    QLabel *labelConditionFrequency;
+    QSplitter *splitter_34;
+    QPushButton *openBFrequency;
+    QPushButton *closeBFrequency;
     QGroupBox *groupBox_2;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter_12;
@@ -92,11 +99,9 @@ public:
     QLabel *drawFromDatabase_2;
     QComboBox *comExperiment;
     QGroupBox *groupBox_3;
-    QHBoxLayout *horizontalLayout_12;
-    QSplitter *splitter_11;
+    QVBoxLayout *verticalLayout_3;
     QLCDNumber *lcdN;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_6;
+    QSplitter *splitter_11;
     QSplitter *splitter_8;
     QPushButton *forwardButton;
     QPushButton *reverseButton;
@@ -106,10 +111,17 @@ public:
     QSplitter *splitter_9;
     QRadioButton *radioNew;
     QRadioButton *radioExisting;
-    QHBoxLayout *horizontalLayout_9;
+    QSplitter *splitter_37;
     QPushButton *drawB;
     QPushButton *stopDB;
     QCustomPlot *wGraphic;
+    QSplitter *splitter_13;
+    QSplitter *splitter_3;
+    QLabel *labelCurrentForce;
+    QLCDNumber *CurrentForceLCD;
+    QSplitter *splitter_4;
+    QLabel *labelCurrentLength;
+    QLCDNumber *CurrentLengthLCD;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QToolBar *toolBar;
@@ -118,212 +130,207 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(993, 748);
+        MainWindow->resize(862, 698);
         clickTheSettings = new QAction(MainWindow);
         clickTheSettings->setObjectName(QString::fromUtf8("clickTheSettings"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        verticalLayout_11 = new QVBoxLayout(centralwidget);
-        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
-        verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
-        verticalLayout_10->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout_14 = new QHBoxLayout();
-        horizontalLayout_14->setSpacing(7);
-        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        horizontalLayout_14->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout_14->setContentsMargins(-1, -1, -1, 20);
-        groupBox = new QGroupBox(centralwidget);
+        verticalLayout_2 = new QVBoxLayout(centralwidget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        splitter_36 = new QSplitter(centralwidget);
+        splitter_36->setObjectName(QString::fromUtf8("splitter_36"));
+        splitter_36->setOrientation(Qt::Vertical);
+        splitter_35 = new QSplitter(splitter_36);
+        splitter_35->setObjectName(QString::fromUtf8("splitter_35"));
+        splitter_35->setMinimumSize(QSize(0, 250));
+        splitter_35->setOrientation(Qt::Horizontal);
+        groupBox = new QGroupBox(splitter_35);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setMinimumSize(QSize(0, 250));
         groupBox->setMaximumSize(QSize(16777215, 200));
-        horizontalLayout_11 = new QHBoxLayout(groupBox);
-        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setSizeConstraint(QLayout::SetDefaultConstraint);
-        verticalLayout = new QVBoxLayout();
+        verticalLayout = new QVBoxLayout(groupBox);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        taskForce = new QLabel(groupBox);
+        splitter_22 = new QSplitter(groupBox);
+        splitter_22->setObjectName(QString::fromUtf8("splitter_22"));
+        splitter_22->setOrientation(Qt::Horizontal);
+        splitter_15 = new QSplitter(splitter_22);
+        splitter_15->setObjectName(QString::fromUtf8("splitter_15"));
+        splitter_15->setOrientation(Qt::Vertical);
+        taskForce = new QLabel(splitter_15);
         taskForce->setObjectName(QString::fromUtf8("taskForce"));
         QFont font;
         font.setFamily(QString::fromUtf8("Agency FB"));
         font.setPointSize(14);
         taskForce->setFont(font);
-
-        verticalLayout->addWidget(taskForce);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        portForce = new QLabel(groupBox);
+        splitter_15->addWidget(taskForce);
+        splitter_2 = new QSplitter(splitter_15);
+        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
+        splitter_2->setOrientation(Qt::Horizontal);
+        portForce = new QLabel(splitter_2);
         portForce->setObjectName(QString::fromUtf8("portForce"));
         portForce->setFont(font);
-
-        horizontalLayout->addWidget(portForce);
-
-        labelPortForce = new QLabel(groupBox);
+        splitter_2->addWidget(portForce);
+        labelPortForce = new QLabel(splitter_2);
         labelPortForce->setObjectName(QString::fromUtf8("labelPortForce"));
         labelPortForce->setFont(font);
         labelPortForce->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-
-        horizontalLayout->addWidget(labelPortForce);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        comLForce = new QComboBox(groupBox);
+        splitter_2->addWidget(labelPortForce);
+        splitter_15->addWidget(splitter_2);
+        comLForce = new QComboBox(splitter_15);
         comLForce->setObjectName(QString::fromUtf8("comLForce"));
-
-        verticalLayout->addWidget(comLForce);
-
-
-        horizontalLayout_4->addLayout(verticalLayout);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer);
-
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        verticalLayout_2->addItem(verticalSpacer);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        conditionForce = new QLabel(groupBox);
+        splitter_15->addWidget(comLForce);
+        splitter_22->addWidget(splitter_15);
+        splitter_19 = new QSplitter(splitter_22);
+        splitter_19->setObjectName(QString::fromUtf8("splitter_19"));
+        splitter_19->setOrientation(Qt::Vertical);
+        splitter_14 = new QSplitter(splitter_19);
+        splitter_14->setObjectName(QString::fromUtf8("splitter_14"));
+        splitter_14->setOrientation(Qt::Horizontal);
+        conditionForce = new QLabel(splitter_14);
         conditionForce->setObjectName(QString::fromUtf8("conditionForce"));
         conditionForce->setFont(font);
-
-        horizontalLayout_2->addWidget(conditionForce);
-
-        labelConditionForce = new QLabel(groupBox);
+        splitter_14->addWidget(conditionForce);
+        labelConditionForce = new QLabel(splitter_14);
         labelConditionForce->setObjectName(QString::fromUtf8("labelConditionForce"));
         labelConditionForce->setFont(font);
         labelConditionForce->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-
-        horizontalLayout_2->addWidget(labelConditionForce);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        openBForce = new QPushButton(groupBox);
+        splitter_14->addWidget(labelConditionForce);
+        splitter_19->addWidget(splitter_14);
+        splitter_16 = new QSplitter(splitter_19);
+        splitter_16->setObjectName(QString::fromUtf8("splitter_16"));
+        splitter_16->setOrientation(Qt::Horizontal);
+        openBForce = new QPushButton(splitter_16);
         openBForce->setObjectName(QString::fromUtf8("openBForce"));
-
-        horizontalLayout_3->addWidget(openBForce);
-
-        closeBForce = new QPushButton(groupBox);
+        splitter_16->addWidget(openBForce);
+        closeBForce = new QPushButton(splitter_16);
         closeBForce->setObjectName(QString::fromUtf8("closeBForce"));
         closeBForce->setEnabled(false);
+        splitter_16->addWidget(closeBForce);
+        splitter_19->addWidget(splitter_16);
+        splitter_22->addWidget(splitter_19);
 
-        horizontalLayout_3->addWidget(closeBForce);
+        verticalLayout->addWidget(splitter_22);
 
-
-        verticalLayout_2->addLayout(horizontalLayout_3);
-
-
-        horizontalLayout_4->addLayout(verticalLayout_2);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_4);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        taskLength = new QLabel(groupBox);
+        splitter_23 = new QSplitter(groupBox);
+        splitter_23->setObjectName(QString::fromUtf8("splitter_23"));
+        splitter_23->setOrientation(Qt::Horizontal);
+        splitter_24 = new QSplitter(splitter_23);
+        splitter_24->setObjectName(QString::fromUtf8("splitter_24"));
+        splitter_24->setOrientation(Qt::Vertical);
+        taskLength = new QLabel(splitter_24);
         taskLength->setObjectName(QString::fromUtf8("taskLength"));
         taskLength->setFont(font);
-
-        verticalLayout_3->addWidget(taskLength);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        portLength = new QLabel(groupBox);
+        splitter_24->addWidget(taskLength);
+        splitter_25 = new QSplitter(splitter_24);
+        splitter_25->setObjectName(QString::fromUtf8("splitter_25"));
+        splitter_25->setOrientation(Qt::Horizontal);
+        portLength = new QLabel(splitter_25);
         portLength->setObjectName(QString::fromUtf8("portLength"));
         portLength->setFont(font);
-
-        horizontalLayout_5->addWidget(portLength);
-
-        labelPortLength = new QLabel(groupBox);
+        splitter_25->addWidget(portLength);
+        labelPortLength = new QLabel(splitter_25);
         labelPortLength->setObjectName(QString::fromUtf8("labelPortLength"));
         labelPortLength->setFont(font);
         labelPortLength->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-
-        horizontalLayout_5->addWidget(labelPortLength);
-
-
-        verticalLayout_3->addLayout(horizontalLayout_5);
-
-        comLLength = new QComboBox(groupBox);
+        splitter_25->addWidget(labelPortLength);
+        splitter_24->addWidget(splitter_25);
+        comLLength = new QComboBox(splitter_24);
         comLLength->setObjectName(QString::fromUtf8("comLLength"));
-
-        verticalLayout_3->addWidget(comLLength);
-
-
-        horizontalLayout_8->addLayout(verticalLayout_3);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_2);
-
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        verticalLayout_4->addItem(verticalSpacer_2);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        conditionLength = new QLabel(groupBox);
+        splitter_24->addWidget(comLLength);
+        splitter_23->addWidget(splitter_24);
+        splitter_26 = new QSplitter(splitter_23);
+        splitter_26->setObjectName(QString::fromUtf8("splitter_26"));
+        splitter_26->setOrientation(Qt::Vertical);
+        splitter_27 = new QSplitter(splitter_26);
+        splitter_27->setObjectName(QString::fromUtf8("splitter_27"));
+        splitter_27->setOrientation(Qt::Horizontal);
+        conditionLength = new QLabel(splitter_27);
         conditionLength->setObjectName(QString::fromUtf8("conditionLength"));
         conditionLength->setFont(font);
-
-        horizontalLayout_6->addWidget(conditionLength);
-
-        labelConditionLength = new QLabel(groupBox);
+        splitter_27->addWidget(conditionLength);
+        labelConditionLength = new QLabel(splitter_27);
         labelConditionLength->setObjectName(QString::fromUtf8("labelConditionLength"));
         labelConditionLength->setFont(font);
         labelConditionLength->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-
-        horizontalLayout_6->addWidget(labelConditionLength);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_6);
-
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        openBLength = new QPushButton(groupBox);
+        splitter_27->addWidget(labelConditionLength);
+        splitter_26->addWidget(splitter_27);
+        splitter_28 = new QSplitter(splitter_26);
+        splitter_28->setObjectName(QString::fromUtf8("splitter_28"));
+        splitter_28->setOrientation(Qt::Horizontal);
+        openBLength = new QPushButton(splitter_28);
         openBLength->setObjectName(QString::fromUtf8("openBLength"));
-
-        horizontalLayout_7->addWidget(openBLength);
-
-        closeBLength = new QPushButton(groupBox);
+        splitter_28->addWidget(openBLength);
+        closeBLength = new QPushButton(splitter_28);
         closeBLength->setObjectName(QString::fromUtf8("closeBLength"));
         closeBLength->setEnabled(false);
+        splitter_28->addWidget(closeBLength);
+        splitter_26->addWidget(splitter_28);
+        splitter_23->addWidget(splitter_26);
 
-        horizontalLayout_7->addWidget(closeBLength);
+        verticalLayout->addWidget(splitter_23);
 
+        splitter_29 = new QSplitter(groupBox);
+        splitter_29->setObjectName(QString::fromUtf8("splitter_29"));
+        splitter_29->setOrientation(Qt::Horizontal);
+        splitter_30 = new QSplitter(splitter_29);
+        splitter_30->setObjectName(QString::fromUtf8("splitter_30"));
+        splitter_30->setOrientation(Qt::Vertical);
+        taskFrequency = new QLabel(splitter_30);
+        taskFrequency->setObjectName(QString::fromUtf8("taskFrequency"));
+        taskFrequency->setFont(font);
+        splitter_30->addWidget(taskFrequency);
+        splitter_31 = new QSplitter(splitter_30);
+        splitter_31->setObjectName(QString::fromUtf8("splitter_31"));
+        splitter_31->setOrientation(Qt::Horizontal);
+        portFrequency = new QLabel(splitter_31);
+        portFrequency->setObjectName(QString::fromUtf8("portFrequency"));
+        portFrequency->setFont(font);
+        splitter_31->addWidget(portFrequency);
+        labelPortFrequency = new QLabel(splitter_31);
+        labelPortFrequency->setObjectName(QString::fromUtf8("labelPortFrequency"));
+        labelPortFrequency->setFont(font);
+        labelPortFrequency->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        splitter_31->addWidget(labelPortFrequency);
+        splitter_30->addWidget(splitter_31);
+        comLFrequency = new QComboBox(splitter_30);
+        comLFrequency->setObjectName(QString::fromUtf8("comLFrequency"));
+        splitter_30->addWidget(comLFrequency);
+        splitter_29->addWidget(splitter_30);
+        splitter_32 = new QSplitter(splitter_29);
+        splitter_32->setObjectName(QString::fromUtf8("splitter_32"));
+        splitter_32->setOrientation(Qt::Vertical);
+        splitter_33 = new QSplitter(splitter_32);
+        splitter_33->setObjectName(QString::fromUtf8("splitter_33"));
+        splitter_33->setOrientation(Qt::Horizontal);
+        conditionFrequency = new QLabel(splitter_33);
+        conditionFrequency->setObjectName(QString::fromUtf8("conditionFrequency"));
+        conditionFrequency->setFont(font);
+        splitter_33->addWidget(conditionFrequency);
+        labelConditionFrequency = new QLabel(splitter_33);
+        labelConditionFrequency->setObjectName(QString::fromUtf8("labelConditionFrequency"));
+        labelConditionFrequency->setFont(font);
+        labelConditionFrequency->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        splitter_33->addWidget(labelConditionFrequency);
+        splitter_32->addWidget(splitter_33);
+        splitter_34 = new QSplitter(splitter_32);
+        splitter_34->setObjectName(QString::fromUtf8("splitter_34"));
+        splitter_34->setOrientation(Qt::Horizontal);
+        openBFrequency = new QPushButton(splitter_34);
+        openBFrequency->setObjectName(QString::fromUtf8("openBFrequency"));
+        splitter_34->addWidget(openBFrequency);
+        closeBFrequency = new QPushButton(splitter_34);
+        closeBFrequency->setObjectName(QString::fromUtf8("closeBFrequency"));
+        closeBFrequency->setEnabled(false);
+        splitter_34->addWidget(closeBFrequency);
+        splitter_32->addWidget(splitter_34);
+        splitter_29->addWidget(splitter_32);
 
-        verticalLayout_4->addLayout(horizontalLayout_7);
+        verticalLayout->addWidget(splitter_29);
 
-
-        horizontalLayout_8->addLayout(verticalLayout_4);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_8);
-
-
-        horizontalLayout_11->addLayout(verticalLayout_5);
-
-
-        horizontalLayout_14->addWidget(groupBox);
-
-        groupBox_2 = new QGroupBox(centralwidget);
+        splitter_35->addWidget(groupBox);
+        groupBox_2 = new QGroupBox(splitter_35);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        groupBox_2->setMinimumSize(QSize(0, 250));
         groupBox_2->setMaximumSize(QSize(16777215, 200));
         verticalLayout_7 = new QVBoxLayout(groupBox_2);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -380,27 +387,23 @@ public:
 
         verticalLayout_7->addWidget(splitter_12);
 
-
-        horizontalLayout_14->addWidget(groupBox_2);
-
-        groupBox_3 = new QGroupBox(centralwidget);
+        splitter_35->addWidget(groupBox_2);
+        groupBox_3 = new QGroupBox(splitter_35);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        groupBox_3->setMinimumSize(QSize(0, 250));
         groupBox_3->setMaximumSize(QSize(16777215, 200));
-        horizontalLayout_12 = new QHBoxLayout(groupBox_3);
-        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        verticalLayout_3 = new QVBoxLayout(groupBox_3);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        lcdN = new QLCDNumber(groupBox_3);
+        lcdN->setObjectName(QString::fromUtf8("lcdN"));
+        lcdN->setMinimumSize(QSize(0, 50));
+
+        verticalLayout_3->addWidget(lcdN);
+
         splitter_11 = new QSplitter(groupBox_3);
         splitter_11->setObjectName(QString::fromUtf8("splitter_11"));
         splitter_11->setOrientation(Qt::Vertical);
-        lcdN = new QLCDNumber(splitter_11);
-        lcdN->setObjectName(QString::fromUtf8("lcdN"));
-        lcdN->setMinimumSize(QSize(0, 50));
-        splitter_11->addWidget(lcdN);
-        layoutWidget = new QWidget(splitter_11);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        splitter_8 = new QSplitter(layoutWidget);
+        splitter_8 = new QSplitter(splitter_11);
         splitter_8->setObjectName(QString::fromUtf8("splitter_8"));
         splitter_8->setOrientation(Qt::Horizontal);
         forwardButton = new QPushButton(splitter_8);
@@ -409,10 +412,8 @@ public:
         reverseButton = new QPushButton(splitter_8);
         reverseButton->setObjectName(QString::fromUtf8("reverseButton"));
         splitter_8->addWidget(reverseButton);
-
-        verticalLayout_6->addWidget(splitter_8);
-
-        splitter_10 = new QSplitter(layoutWidget);
+        splitter_11->addWidget(splitter_8);
+        splitter_10 = new QSplitter(splitter_11);
         splitter_10->setObjectName(QString::fromUtf8("splitter_10"));
         splitter_10->setOrientation(Qt::Horizontal);
         label_4 = new QLabel(splitter_10);
@@ -422,64 +423,78 @@ public:
         spinFrequency = new QDoubleSpinBox(splitter_10);
         spinFrequency->setObjectName(QString::fromUtf8("spinFrequency"));
         splitter_10->addWidget(spinFrequency);
-
-        verticalLayout_6->addWidget(splitter_10);
-
-        splitter_9 = new QSplitter(layoutWidget);
+        splitter_11->addWidget(splitter_10);
+        splitter_9 = new QSplitter(splitter_11);
         splitter_9->setObjectName(QString::fromUtf8("splitter_9"));
         splitter_9->setOrientation(Qt::Horizontal);
         radioNew = new QRadioButton(splitter_9);
         radioNew->setObjectName(QString::fromUtf8("radioNew"));
+        radioNew->setEnabled(true);
+        radioNew->setCheckable(true);
         radioNew->setChecked(true);
         splitter_9->addWidget(radioNew);
         radioExisting = new QRadioButton(splitter_9);
         radioExisting->setObjectName(QString::fromUtf8("radioExisting"));
         splitter_9->addWidget(radioExisting);
-
-        verticalLayout_6->addWidget(splitter_9);
-
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        drawB = new QPushButton(layoutWidget);
+        splitter_11->addWidget(splitter_9);
+        splitter_37 = new QSplitter(splitter_11);
+        splitter_37->setObjectName(QString::fromUtf8("splitter_37"));
+        splitter_37->setOrientation(Qt::Horizontal);
+        drawB = new QPushButton(splitter_37);
         drawB->setObjectName(QString::fromUtf8("drawB"));
         drawB->setEnabled(true);
         drawB->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 0);"));
-
-        horizontalLayout_9->addWidget(drawB);
-
-        stopDB = new QPushButton(layoutWidget);
+        splitter_37->addWidget(drawB);
+        stopDB = new QPushButton(splitter_37);
         stopDB->setObjectName(QString::fromUtf8("stopDB"));
         stopDB->setEnabled(false);
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
+        splitter_37->addWidget(stopDB);
+        splitter_11->addWidget(splitter_37);
 
-        horizontalLayout_9->addWidget(stopDB);
+        verticalLayout_3->addWidget(splitter_11);
 
-
-        verticalLayout_6->addLayout(horizontalLayout_9);
-
-        splitter_11->addWidget(layoutWidget);
-
-        horizontalLayout_12->addWidget(splitter_11);
-
-
-        horizontalLayout_14->addWidget(groupBox_3);
-
-
-        verticalLayout_10->addLayout(horizontalLayout_14);
-
-        wGraphic = new QCustomPlot(centralwidget);
+        splitter_35->addWidget(groupBox_3);
+        splitter_36->addWidget(splitter_35);
+        wGraphic = new QCustomPlot(splitter_36);
         wGraphic->setObjectName(QString::fromUtf8("wGraphic"));
         wGraphic->setMinimumSize(QSize(0, 240));
+        splitter_36->addWidget(wGraphic);
 
-        verticalLayout_10->addWidget(wGraphic);
+        verticalLayout_2->addWidget(splitter_36);
 
+        splitter_13 = new QSplitter(centralwidget);
+        splitter_13->setObjectName(QString::fromUtf8("splitter_13"));
+        splitter_13->setOrientation(Qt::Horizontal);
+        splitter_3 = new QSplitter(splitter_13);
+        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
+        splitter_3->setOrientation(Qt::Vertical);
+        labelCurrentForce = new QLabel(splitter_3);
+        labelCurrentForce->setObjectName(QString::fromUtf8("labelCurrentForce"));
+        labelCurrentForce->setFont(font);
+        splitter_3->addWidget(labelCurrentForce);
+        CurrentForceLCD = new QLCDNumber(splitter_3);
+        CurrentForceLCD->setObjectName(QString::fromUtf8("CurrentForceLCD"));
+        splitter_3->addWidget(CurrentForceLCD);
+        splitter_13->addWidget(splitter_3);
+        splitter_4 = new QSplitter(splitter_13);
+        splitter_4->setObjectName(QString::fromUtf8("splitter_4"));
+        splitter_4->setOrientation(Qt::Vertical);
+        labelCurrentLength = new QLabel(splitter_4);
+        labelCurrentLength->setObjectName(QString::fromUtf8("labelCurrentLength"));
+        labelCurrentLength->setFont(font);
+        splitter_4->addWidget(labelCurrentLength);
+        CurrentLengthLCD = new QLCDNumber(splitter_4);
+        CurrentLengthLCD->setObjectName(QString::fromUtf8("CurrentLengthLCD"));
+        splitter_4->addWidget(CurrentLengthLCD);
+        splitter_13->addWidget(splitter_4);
 
-        verticalLayout_11->addLayout(verticalLayout_10);
+        verticalLayout_2->addWidget(splitter_13);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 993, 26));
+        menubar->setGeometry(QRect(0, 0, 862, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -517,6 +532,13 @@ public:
         labelConditionLength->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
         openBLength->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
         closeBLength->setText(QCoreApplication::translate("MainWindow", "Close", nullptr));
+        taskFrequency->setText(QCoreApplication::translate("MainWindow", "Frequency", nullptr));
+        portFrequency->setText(QCoreApplication::translate("MainWindow", "PORT:", nullptr));
+        labelPortFrequency->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
+        conditionFrequency->setText(QCoreApplication::translate("MainWindow", "CONDITION:", nullptr));
+        labelConditionFrequency->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
+        openBFrequency->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
+        closeBFrequency->setText(QCoreApplication::translate("MainWindow", "Close", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Database", nullptr));
         NDB->setText(QCoreApplication::translate("MainWindow", "NEW:", nullptr));
         labelSet->setText(QCoreApplication::translate("MainWindow", "Series:", nullptr));
@@ -532,6 +554,8 @@ public:
         radioExisting->setText(QCoreApplication::translate("MainWindow", "Existing", nullptr));
         drawB->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         stopDB->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
+        labelCurrentForce->setText(QCoreApplication::translate("MainWindow", "Current force:", nullptr));
+        labelCurrentLength->setText(QCoreApplication::translate("MainWindow", "Current length delta:", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

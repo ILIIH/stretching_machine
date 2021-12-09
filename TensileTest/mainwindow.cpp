@@ -287,7 +287,7 @@ void MainWindow::on_drawB_clicked()
                 int length = QInputDialog::getInt(this, "New Series", "What's the length?");
                 int width = QInputDialog::getInt(this, "New Series", "What's the width?");
                 int height = QInputDialog::getInt(this, "New Series", "What's the height?");
-                QStringList properties = QInputDialog::getInt(this, "New Series", "Write the properties you want to calculate using ONLY comas").split(',');
+                QStringList properties = QInputDialog::getText(this, "New Series", "Write the properties you want to calculate using ONLY comas").split(',');
                 db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
         }
