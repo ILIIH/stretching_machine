@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QApplication>
 #include <QDebug>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -282,7 +283,12 @@ void MainWindow::on_drawB_clicked()
             if(!db->hasSeries(currentSeriesName))
             {
                 currentSeriesNum = db->countSeries() + 1;   //QString material, int height, int width, int length, QStringList properties
-                //db->createSeries(currentSeriesNum, currentSeriesName/* I need more lineEdits to obtain all the needed info */);
+                QString material = QInputDialog::getText(this, "New Series", "What's the material?");
+                int length = QInputDialog::getInt(this, "New Series", "What's the length?");
+                int width = QInputDialog::getInt(this, "New Series", "What's the width?");
+                int height = QInputDialog::getInt(this, "New Series", "What's the height?");
+                QStringList properties = QInputDialog::getInt(this, "New Series", "Write the properties you want to calculate using ONLY comas").split(',');
+                db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
         }
         else
