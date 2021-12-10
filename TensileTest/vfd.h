@@ -19,7 +19,7 @@ public:
     void readAnswer();
     void run();
     void stop();
-    void setFrequency(int frq);
+    void setFrequency(float frq);
     void setName(QString);
     QString getName();
    // void open();

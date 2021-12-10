@@ -65,7 +65,8 @@ void vfd::readAnswer()
 
 void vfd::forward()
 {
-    msg=":010620000100\r\n";
+   // msg=":010620000030\r\n";
+    msg=":010620000010\r\n";
 
     msg.insert(msg.size()-2, QByteArray::number(lrcCount(msg), 16).toUpper());
 
@@ -74,7 +75,8 @@ void vfd::forward()
 
 void vfd::reverse()
 {
-    msg=":010620000200\r\n";
+   // msg=":010620000030\r\n";
+    msg=":010620000020\r\n";
 
     msg.insert(msg.size()-2, QByteArray::number(lrcCount(msg), 16).toUpper());
 
@@ -93,14 +95,16 @@ void vfd::stop()
     port->write(msg);
 }
 
-void vfd::setFrequency(int frq)
+void vfd::setFrequency(float frq)
 {
     msg=":";
 
     //zapisali slave, func i adres
     msg.push_back("01062001");
 
-    QByteArray data(QByteArray::number(frq, 16).toUpper());
+    int ifrq=frq*100;
+
+    QByteArray data(QByteArray::number(ifrq, 16).toUpper());    //cheknut
     //QByteArray data(QByteArray::number(frq, 10));
 
     while(data.size()%4!=0)
@@ -114,11 +118,6 @@ void vfd::setFrequency(int frq)
 
     qDebug()<< msg;
     qDebug()<<msg.size();
-
-
-    //    msg=":010620000002\r\n";
-    //  port->write(":010620000002D7\r\n");
-  //port->waitForBytesWritten(1000);
 
 }
 

@@ -99,7 +99,6 @@ public:
     QLabel *drawFromDatabase_2;
     QComboBox *comExperiment;
     QGroupBox *groupBox_3;
-    QVBoxLayout *verticalLayout_3;
     QLCDNumber *lcdN;
     QSplitter *splitter_11;
     QSplitter *splitter_8;
@@ -114,6 +113,7 @@ public:
     QSplitter *splitter_37;
     QPushButton *drawB;
     QPushButton *stopDB;
+    QPushButton *pushButton;
     QCustomPlot *wGraphic;
     QSplitter *splitter_13;
     QSplitter *splitter_3;
@@ -130,7 +130,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(862, 698);
+        MainWindow->resize(871, 698);
         clickTheSettings = new QAction(MainWindow);
         clickTheSettings->setObjectName(QString::fromUtf8("clickTheSettings"));
         centralwidget = new QWidget(MainWindow);
@@ -146,7 +146,7 @@ public:
         splitter_35->setOrientation(Qt::Horizontal);
         groupBox = new QGroupBox(splitter_35);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setMinimumSize(QSize(0, 250));
+        groupBox->setMinimumSize(QSize(360, 250));
         groupBox->setMaximumSize(QSize(16777215, 200));
         verticalLayout = new QVBoxLayout(groupBox);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -330,7 +330,7 @@ public:
         splitter_35->addWidget(groupBox);
         groupBox_2 = new QGroupBox(splitter_35);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setMinimumSize(QSize(0, 250));
+        groupBox_2->setMinimumSize(QSize(270, 250));
         groupBox_2->setMaximumSize(QSize(16777215, 200));
         verticalLayout_7 = new QVBoxLayout(groupBox_2);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -390,18 +390,15 @@ public:
         splitter_35->addWidget(groupBox_2);
         groupBox_3 = new QGroupBox(splitter_35);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setMinimumSize(QSize(0, 250));
+        groupBox_3->setMinimumSize(QSize(207, 250));
         groupBox_3->setMaximumSize(QSize(16777215, 200));
-        verticalLayout_3 = new QVBoxLayout(groupBox_3);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         lcdN = new QLCDNumber(groupBox_3);
         lcdN->setObjectName(QString::fromUtf8("lcdN"));
+        lcdN->setGeometry(QRect(12, 28, 181, 50));
         lcdN->setMinimumSize(QSize(0, 50));
-
-        verticalLayout_3->addWidget(lcdN);
-
         splitter_11 = new QSplitter(groupBox_3);
         splitter_11->setObjectName(QString::fromUtf8("splitter_11"));
+        splitter_11->setGeometry(QRect(12, 85, 186, 104));
         splitter_11->setOrientation(Qt::Vertical);
         splitter_8 = new QSplitter(splitter_11);
         splitter_8->setObjectName(QString::fromUtf8("splitter_8"));
@@ -451,9 +448,9 @@ public:
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
         splitter_37->addWidget(stopDB);
         splitter_11->addWidget(splitter_37);
-
-        verticalLayout_3->addWidget(splitter_11);
-
+        pushButton = new QPushButton(groupBox_3);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(17, 200, 171, 22));
         splitter_35->addWidget(groupBox_3);
         splitter_36->addWidget(splitter_35);
         wGraphic = new QCustomPlot(splitter_36);
@@ -494,7 +491,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 862, 26));
+        menubar->setGeometry(QRect(0, 0, 871, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -554,6 +551,7 @@ public:
         radioExisting->setText(QCoreApplication::translate("MainWindow", "Existing", nullptr));
         drawB->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         stopDB->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Change frequency", nullptr));
         labelCurrentForce->setText(QCoreApplication::translate("MainWindow", "Current force:", nullptr));
         labelCurrentLength->setText(QCoreApplication::translate("MainWindow", "Current length delta:", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));

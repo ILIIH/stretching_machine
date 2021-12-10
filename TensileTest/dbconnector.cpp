@@ -35,7 +35,7 @@ void DBConnector::insertData(int seriesNum, int experimentNum, double time, doub
 
 void DBConnector::createSeries(int seriesNum, QString seriesName, QString material, int height, int width, int length, QStringList properties)
 {
-    query->prepare("INSERT INTO experiment_info (series_num,series_name,height,width,material,length) VALUES (?,?,?,?,?,?)");
+    query->prepare("INSERT INTO experiment_info (series_num,series_name,height,width,material,length) VALUES (?,\"?\",?,?,\"?\",?)");
     query->addBindValue(seriesNum);
     query->addBindValue(seriesName);
     query->addBindValue(height);
