@@ -151,6 +151,7 @@ void MainWindow::on_openBFrequency_clicked()
 
     //serial
     VFD.setName(name);
+   // VFD.open();
 }
 
 void MainWindow::on_closeBForce_clicked()
@@ -261,22 +262,6 @@ void MainWindow::on_drawB_clicked()
         {
             QMessageBox::information(this, "Drawing", "New");
 
-            //serials
-            Length.addPort();
-            Length.portOpen();
-            Force.addPort();
-            Force.portOpen();
-
-            //timers
-            timerDraw->startTimer(1000);
-            timerSerials->startTimer(100);
-
-            //style button
-            ui->closeBForce->setEnabled(false);
-            ui->closeBLength->setEnabled(false);
-            ui->drawB->setEnabled(false);
-            ui->stopDB->setEnabled(true);
-
             //DataBase
             QString currentSeriesName = ui->lineSeries->text();
 
@@ -290,6 +275,28 @@ void MainWindow::on_drawB_clicked()
                 QStringList properties = QInputDialog::getText(this, "New Series", "Write the properties you want to calculate using ONLY comas").split(',');
                 db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
+
+            //serials
+            Length.addPort();
+            Length.portOpen();
+            Force.addPort();
+            Force.portOpen();
+
+            //vfd
+            VFD.run();
+            VFD.setFrequency(ui->spinFrequency->value());
+
+            //timers
+            timerDraw->startTimer(1000);
+            timerSerials->startTimer(100);
+
+            //style button
+            ui->closeBForce->setEnabled(false);
+            ui->closeBLength->setEnabled(false);
+            ui->drawB->setEnabled(false);
+            ui->stopDB->setEnabled(true);
+
+
         }
         else
         {
@@ -412,3 +419,10 @@ void MainWindow::on_clickTheSettings_triggered()
     setting->show();
     this->close();
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    VFD.setFrequency(ui->spinFrequency->value());
+
+}
+

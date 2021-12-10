@@ -70,7 +70,7 @@ QSqlQuery DBConnector::getSeriesNames()
 
 bool DBConnector::hasSeries(QString name)
 {
-    query->prepare("SELECT series_num FROM  experiment_info WHERE series_name = ?");
+    query->prepare("SELECT series_num FROM  experiment_info WHERE series_name = \"?\"");
     query->addBindValue(name);
 
     query->exec();

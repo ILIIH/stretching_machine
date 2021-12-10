@@ -22,6 +22,7 @@ public:
     void setFrequency(int frq);
     void setName(QString);
     QString getName();
+   // void open();
 
 public slots:
     void forward();
@@ -30,7 +31,7 @@ public slots:
 
 private:
 
-    QSerialPort *port = new QSerialPort ("COM3");
+    QSerialPort *port = new QSerialPort ("COM4");
     QByteArray msg;
     //int chastota=0;
 };
