@@ -22,7 +22,7 @@ public:
     void setFrequency(float frq);
     void setName(QString);
     QString getName();
-   // void open();
+    void open();
 
 public slots:
     void forward();
@@ -30,10 +30,10 @@ public slots:
 
 
 private:
-
-    QSerialPort *port = new QSerialPort ("COM4");
+   // QSerialPort *port = new QSerialPort ("COM4");
+    QSerialPort *port;
     QByteArray msg;
-    //int chastota=0;
+
 };
 
 #endif // VFD_H

@@ -2,8 +2,9 @@
 
 vfd::vfd()
 {
+    port = new QSerialPort(this);
     portSettings();
-    port->open(QIODevice::ReadWrite);
+   // port->open(QIODevice::ReadWrite);
     connect(port, &QSerialPort::readyRead, this, &vfd::readAnswer );
 
 
@@ -59,7 +60,6 @@ int vfd::lrcCount(QByteArray arr)
 void vfd::readAnswer()
 {
     QByteArray buffer = port->readAll();
-    //ui->lineEdit->setText(buffer);
     qDebug()<<"prischlo  "<<buffer;
 }
 
@@ -129,6 +129,11 @@ void vfd::setName(QString name)
 QString vfd::getName()
 {
     return port->portName();
+}
+
+void vfd::open()
+{
+    port->open(QIODevice::ReadWrite);
 }
 
 

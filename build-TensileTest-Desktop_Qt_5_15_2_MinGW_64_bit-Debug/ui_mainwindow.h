@@ -24,7 +24,6 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "qcustomplot.h"
@@ -99,6 +98,7 @@ public:
     QLabel *drawFromDatabase_2;
     QComboBox *comExperiment;
     QGroupBox *groupBox_3;
+    QVBoxLayout *verticalLayout_3;
     QLCDNumber *lcdN;
     QSplitter *splitter_11;
     QSplitter *splitter_8;
@@ -124,7 +124,6 @@ public:
     QLCDNumber *CurrentLengthLCD;
     QMenuBar *menubar;
     QStatusBar *statusbar;
-    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -392,13 +391,16 @@ public:
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(207, 250));
         groupBox_3->setMaximumSize(QSize(16777215, 200));
+        verticalLayout_3 = new QVBoxLayout(groupBox_3);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         lcdN = new QLCDNumber(groupBox_3);
         lcdN->setObjectName(QString::fromUtf8("lcdN"));
-        lcdN->setGeometry(QRect(12, 28, 181, 50));
         lcdN->setMinimumSize(QSize(0, 50));
+
+        verticalLayout_3->addWidget(lcdN);
+
         splitter_11 = new QSplitter(groupBox_3);
         splitter_11->setObjectName(QString::fromUtf8("splitter_11"));
-        splitter_11->setGeometry(QRect(12, 85, 186, 104));
         splitter_11->setOrientation(Qt::Vertical);
         splitter_8 = new QSplitter(splitter_11);
         splitter_8->setObjectName(QString::fromUtf8("splitter_8"));
@@ -448,9 +450,12 @@ public:
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
         splitter_37->addWidget(stopDB);
         splitter_11->addWidget(splitter_37);
-        pushButton = new QPushButton(groupBox_3);
+        pushButton = new QPushButton(splitter_11);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(17, 200, 171, 22));
+        splitter_11->addWidget(pushButton);
+
+        verticalLayout_3->addWidget(splitter_11);
+
         splitter_35->addWidget(groupBox_3);
         splitter_36->addWidget(splitter_35);
         wGraphic = new QCustomPlot(splitter_36);
@@ -491,16 +496,11 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 871, 26));
+        menubar->setGeometry(QRect(0, 0, 871, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
-        toolBar = new QToolBar(MainWindow);
-        toolBar->setObjectName(QString::fromUtf8("toolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
-
-        toolBar->addAction(clickTheSettings);
 
         retranslateUi(MainWindow);
 
@@ -554,7 +554,6 @@ public:
         pushButton->setText(QCoreApplication::translate("MainWindow", "Change frequency", nullptr));
         labelCurrentForce->setText(QCoreApplication::translate("MainWindow", "Current force:", nullptr));
         labelCurrentLength->setText(QCoreApplication::translate("MainWindow", "Current length delta:", nullptr));
-        toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };

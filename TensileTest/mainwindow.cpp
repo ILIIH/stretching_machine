@@ -147,7 +147,7 @@ void MainWindow::on_openBFrequency_clicked()
 
     //serial
     VFD.setName(name);
-   // VFD.open();
+    VFD.open();
 }
 
 void MainWindow::on_closeBForce_clicked()
@@ -280,10 +280,6 @@ void MainWindow::on_drawB_clicked()
             Force.addPort();
             Force.portOpen();
 
-            //vfd
-            VFD.run();
-            VFD.setFrequency(ui->spinFrequency->value());
-
             //timers
             timerDraw->startTimer(1000);
             timerSerials->startTimer(100);
@@ -395,6 +391,10 @@ void MainWindow::on_stopDB_clicked()
     }
     else
     {
+        //vfd
+        VFD.stop();
+        //vfd
+
         //Timer
         graphFromDB->stop();
 
