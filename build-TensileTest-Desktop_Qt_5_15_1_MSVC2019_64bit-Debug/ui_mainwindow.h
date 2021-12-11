@@ -24,7 +24,6 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "qcustomplot.h"
@@ -114,6 +113,7 @@ public:
     QSplitter *splitter_37;
     QPushButton *drawB;
     QPushButton *stopDB;
+    QPushButton *pushButton;
     QCustomPlot *wGraphic;
     QSplitter *splitter_13;
     QSplitter *splitter_3;
@@ -124,13 +124,12 @@ public:
     QLCDNumber *CurrentLengthLCD;
     QMenuBar *menubar;
     QStatusBar *statusbar;
-    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(759, 634);
+        MainWindow->resize(871, 698);
         clickTheSettings = new QAction(MainWindow);
         clickTheSettings->setObjectName(QString::fromUtf8("clickTheSettings"));
         centralwidget = new QWidget(MainWindow);
@@ -146,7 +145,7 @@ public:
         splitter_35->setOrientation(Qt::Horizontal);
         groupBox = new QGroupBox(splitter_35);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setMinimumSize(QSize(0, 250));
+        groupBox->setMinimumSize(QSize(360, 250));
         groupBox->setMaximumSize(QSize(16777215, 200));
         verticalLayout = new QVBoxLayout(groupBox);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -330,7 +329,7 @@ public:
         splitter_35->addWidget(groupBox);
         groupBox_2 = new QGroupBox(splitter_35);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setMinimumSize(QSize(0, 250));
+        groupBox_2->setMinimumSize(QSize(270, 250));
         groupBox_2->setMaximumSize(QSize(16777215, 200));
         verticalLayout_7 = new QVBoxLayout(groupBox_2);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -390,7 +389,7 @@ public:
         splitter_35->addWidget(groupBox_2);
         groupBox_3 = new QGroupBox(splitter_35);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setMinimumSize(QSize(0, 250));
+        groupBox_3->setMinimumSize(QSize(207, 250));
         groupBox_3->setMaximumSize(QSize(16777215, 200));
         verticalLayout_3 = new QVBoxLayout(groupBox_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -451,6 +450,9 @@ public:
         stopDB->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
         splitter_37->addWidget(stopDB);
         splitter_11->addWidget(splitter_37);
+        pushButton = new QPushButton(splitter_11);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        splitter_11->addWidget(pushButton);
 
         verticalLayout_3->addWidget(splitter_11);
 
@@ -494,16 +496,11 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 759, 25));
+        menubar->setGeometry(QRect(0, 0, 871, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
-        toolBar = new QToolBar(MainWindow);
-        toolBar->setObjectName(QString::fromUtf8("toolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
-
-        toolBar->addAction(clickTheSettings);
 
         retranslateUi(MainWindow);
 
@@ -554,9 +551,9 @@ public:
         radioExisting->setText(QCoreApplication::translate("MainWindow", "Existing", nullptr));
         drawB->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         stopDB->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Change frequency", nullptr));
         labelCurrentForce->setText(QCoreApplication::translate("MainWindow", "Current force:", nullptr));
         labelCurrentLength->setText(QCoreApplication::translate("MainWindow", "Current length delta:", nullptr));
-        toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };

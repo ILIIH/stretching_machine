@@ -11,9 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Tensile-Test");
 
-    //Windows
-    setting = new Settings;
-
     //Graphic
     Graphic.setQCustomPlot(ui->wGraphic);
 
@@ -33,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
     graphFromDB = new QTimer();
 
     //connect
-    connect(setting, &Settings::Open, this, &MainWindow::show);
     connect(timerDraw, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockDraw);
     connect(timerSerials, &ThreadedTimer::signalForMainWindow, this, &MainWindow::clockSerials);
     connect(graphFromDB, &QTimer::timeout, this, &MainWindow::clockExistingData);
@@ -249,11 +245,8 @@ void MainWindow::on_radioExisting_clicked()
 
 void MainWindow::on_drawB_clicked()
 {
-    //vfd
-    VFD.run();
-    VFD.setFrequency(ui->spinFrequency->value());
-    //vfd
-
+    //graph
+    Graphic.clear();
 
     drawingTime = 0;
     if (ui->radioNew->isChecked())
@@ -275,6 +268,11 @@ void MainWindow::on_drawB_clicked()
                 QStringList properties = QInputDialog::getText(this, "New Series", "Write the properties you want to calculate using ONLY comas").split(',');
                 db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
+
+            //vfd
+            VFD.run();
+            VFD.setFrequency(ui->spinFrequency->value());
+            //vfd
 
             //serials
             Length.addPort();
@@ -372,12 +370,12 @@ void MainWindow::clockExistingData()
 
 void MainWindow::on_stopDB_clicked()
 {
-    //vfd
-    VFD.stop();
-    //vfd
-
     if (ui->radioNew->isChecked())
     {
+        //vfd
+        VFD.stop();
+        //vfd
+
         //serials
         Force.portClose();
         Length.portClose();
@@ -387,7 +385,7 @@ void MainWindow::on_stopDB_clicked()
         timerSerials->stopTimer();
 
         //graph
-        Graphic.clear();
+        //Graphic.clear();
 
         //style button
         ui->closeBForce->setEnabled(true);
@@ -401,7 +399,7 @@ void MainWindow::on_stopDB_clicked()
         graphFromDB->stop();
 
         //graph
-        Graphic.clear();
+        //Graphic.clear();
 
         //style button
         ui->drawB->setEnabled(true);
@@ -414,11 +412,15 @@ void MainWindow::on_stopDB_clicked()
 //FOLLOWTHELINK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+
 void MainWindow::on_clickTheSettings_triggered()
 {
-    setting->show();
-    this->close();
+    QMessageBox::information(this, "CAUTION!!!", "Chose the radiobutton");
 }
+
+
+
+//VFD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void MainWindow::on_pushButton_clicked()
 {

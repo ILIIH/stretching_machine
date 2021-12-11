@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <settings.h>
 #include <QMainWindow>
 #include <QThread>
 #include <QMessageBox>
@@ -81,7 +80,7 @@ private:
     Ui::MainWindow *ui;
 
     //widgets
-    Settings* setting;
+
 
     //graphic and ports
     graphic Graphic;

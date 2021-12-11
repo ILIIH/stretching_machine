@@ -74,7 +74,7 @@ void SerialPorts::switchConection()
     conection = !conection;
 }
 
-const bool SerialPorts::getConection()
+bool SerialPorts::getConection()
 {
     return conection;
 }

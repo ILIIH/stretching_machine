@@ -14,7 +14,6 @@ SOURCES += \
     mainwindow.cpp \
     qcustomplot.cpp \
     serialports.cpp \
-    settings.cpp \
     threadedtimer.cpp \
     vfd.cpp\
     dbconnector.cpp
@@ -24,14 +23,12 @@ HEADERS += \
     mainwindow.h \
     qcustomplot.h \
     serialports.h \
-    settings.h \
     threadedtimer.h \
     vfd.h \
     dbconnector.h
 
 FORMS += \
-    mainwindow.ui \
-    settings.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

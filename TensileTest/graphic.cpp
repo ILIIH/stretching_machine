@@ -23,8 +23,9 @@ void graphic::setQCustomPlot(QCustomPlot *Graphic)
     this->plot = new QCPCurve(this->Graphic->xAxis, this->Graphic->yAxis);
 
     this->plot->setPen(QPen(Qt::black));
-
-    this->Graphic->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+    this->Graphic->setInteraction(QCP::iRangeDrag, true);
+    this->Graphic->setInteraction(QCP::iRangeZoom, true);
+    //this->Graphic->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
     this->Graphic->axisRect()->setupFullAxesBox();
     this->Graphic->rescaleAxes();
 }

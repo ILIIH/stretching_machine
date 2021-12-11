@@ -29,7 +29,7 @@ public:
     void portClose();
     void writeData(QString);
     void switchConection();
-    const bool getConection();
+    bool getConection();
     const QString getName();
 
 public slots:
