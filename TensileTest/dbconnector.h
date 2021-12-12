@@ -3,7 +3,6 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QStringList>
-#include <QString>
 
 class DBConnector
 {

@@ -1,10 +1,11 @@
 #include "dbconnector.h"
 #include <QDebug>
+#include <QSqlError>
 
 DBConnector::DBConnector()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("DataBase.db");
+    db.setDatabaseName("/home/nikita/dev/project/project/DataBase.db");
 
     if(db.open())
     {
@@ -22,47 +23,48 @@ DBConnector::~DBConnector()
 
 void DBConnector::insertData(int seriesNum, int experimentNum, double time, double F, double deltaL)
 {
-    query->prepare("INSERT INTO experiment_data (series_num,experiment_num,time,F,delta_l) VALUES (?,?,?,?,?)");
-    query->addBindValue(seriesNum);
-    query->addBindValue(experimentNum);
-    query->addBindValue(time);
-    query->addBindValue(F);
-    query->addBindValue(deltaL);
-    query->exec();
+    QString queryText = "INSERT INTO experiment_data (series_num,experiment_num,time,F,delta_l) VALUES (";
+    QStringList params = {QString::number(seriesNum), QString::number(experimentNum), QString::number(time), QString::number(F), QString::number(deltaL)};
+    queryText.append(params.join(",") + ");");
+
+    query->exec(queryText);
 
     query->clear();
 }
 
 void DBConnector::createSeries(int seriesNum, QString seriesName, QString material, int height, int width, int length, QStringList properties)
 {
-    query->prepare("INSERT INTO experiment_info (series_num,series_name,height,width,material,length) VALUES (?,\"?\",?,?,\"?\",?)");
-    query->addBindValue(seriesNum);
-    query->addBindValue(seriesName);
-    query->addBindValue(height);
-    query->addBindValue(width);
-    query->addBindValue(material);
-    query->addBindValue(length);
-    query->exec();
+    QString queryText = "INSERT INTO experiment_info (series_num,series_name,height,width,material,length) VALUES (";
+    QStringList params = {QString::number(seriesNum), "\"" + seriesName + "\"", QString::number(height), QString::number(width), "\"" + material + "\"", QString::number(length)};
+    queryText.append(params.join(","));
+    queryText.append(");");
+
+    query->exec(queryText);
 
     query->clear();
 
-    query->prepare("CREATE TABLE ? (\"series_num\"  INTEGER NOT NULL, \"experiment_num\"  INTEGER NOT NULL, ? FOREIGN KEY(\"series_num\") REFERENCES \"experiment_info\"(\"series_num\") PRIMARY KEY(\"series_num\",\"experiment_num\");");
-    query->addBindValue("series_" + QString::number(seriesNum) + "_info");
-    query->addBindValue(properties.join(" REAL NOT NULL,") + " REAL NOT NULL,");
-    query->exec();
+    queryText = "CREATE TABLE ";
+    queryText.append("series_" + QString::number(seriesNum) + "_info ");
+    queryText.append("(\"experiment_num\"  INTEGER NOT NULL, ");
+    queryText.append("\"" + properties.join("\" REAL NOT NULL,\"") + "\" REAL NOT NULL, ");
+    queryText.append("PRIMARY KEY(\"experiment_num\"));");
+
+    query->exec(queryText);
 
     query->clear();
 }
 
 void DBConnector::deleteSeries(int seriesNum)
 {
-    query->prepare("DELETE FROM series_info WHERE series_num = ?");
-    query->addBindValue(seriesNum);
+    QString queryText = "DELETE FROM experiment_info WHERE series_num = ";
+    queryText.append(QString::number(seriesNum));
+    query->exec(queryText);
+    query->clear();
 }
 
 QSqlQuery DBConnector::getSeriesNames()
 {
-    query->prepare("SELECT series_name FROM  experiment_info");
+    query->prepare("SELECT series_name FROM experiment_info");
     query->exec();
 
     return *query;
@@ -70,10 +72,10 @@ QSqlQuery DBConnector::getSeriesNames()
 
 bool DBConnector::hasSeries(QString name)
 {
-    query->prepare("SELECT series_num FROM  experiment_info WHERE series_name = \"?\"");
-    query->addBindValue(name);
+    QString queryText = "SELECT series_num FROM  experiment_info WHERE series_name = ";
+    queryText.append("\"" + name + "\"");
 
-    query->exec();
+    query->exec(queryText);
 
     if(query->next())
     {
@@ -97,11 +99,10 @@ int DBConnector::countSeries()
 
 QSqlQuery DBConnector::getData(int seriesNum, int experimentNum, double time)
 {
-    query->prepare("SELECT F, delta_l FROM  experiment_data WHERE series_num = ? AND experiment_num = ? AND time = ?");
-    query->addBindValue(seriesNum);
-    query->addBindValue(experimentNum);
-    query->addBindValue(time);
-    query->exec();
+    QString queryText = "SELECT F, delta_l FROM experiment_data WHERE series_num = ";
+    queryText.append(QString::number(seriesNum) + " AND experiment_num = " + QString::number(experimentNum) + " AND time = " + QString::number(time));
+
+    query->exec(queryText);
 
     return *query;
 }
