@@ -121,8 +121,6 @@ void vfd::setFrequency(float frq)
     port->write(msg);
 
     qDebug()<< msg;
-    qDebug()<<msg.size();
-
      qDebug()<<"444444";
 
 }

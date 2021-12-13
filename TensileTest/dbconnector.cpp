@@ -5,7 +5,7 @@
 DBConnector::DBConnector()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("DataBase.db");
+    db.setDatabaseName("D:\\qt_projects\\stretching_machine\\TensileTest\\DataBase.db");
 
     if(db.open())
     {

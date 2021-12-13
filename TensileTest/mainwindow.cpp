@@ -257,11 +257,9 @@ void MainWindow::on_drawB_clicked()
 
             //DataBase
             QString currentSeriesName = ui->lineSeries->text();
-qDebug()<<"1111";
+
             if(!db->hasSeries(currentSeriesName))
             {
-                qDebug()<<"22222";
-
                 currentSeriesNum = db->countSeries() + 1;   //QString material, int height, int width, int length, QStringList properties
                 QString material = QInputDialog::getText(this, "New Series", "What's the material?");
                 int length = QInputDialog::getInt(this, "New Series", "What's the length?");
@@ -274,7 +272,6 @@ qDebug()<<"1111";
 
             //vfd
             VFD.run();
-           //  qDebug()<<"3333333";
             VFD.setFrequency(ui->spinFrequency->value());
             //vfd
 
