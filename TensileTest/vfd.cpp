@@ -86,7 +86,11 @@ void vfd::reverse()
 void vfd::run()
 {
     msg=":010620000002D7\r\n";
+//    if(port->isOpen())
+//        qDebug()<<"3333333";
+
     port->write(msg);
+    // qDebug()<<"3333333";
 }
 
 void vfd::stop()
@@ -118,6 +122,8 @@ void vfd::setFrequency(float frq)
 
     qDebug()<< msg;
     qDebug()<<msg.size();
+
+     qDebug()<<"444444";
 
 }
 

@@ -5,7 +5,7 @@
 DBConnector::DBConnector()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/nikita/dev/project/project/DataBase.db");
+    db.setDatabaseName("DataBase.db");
 
     if(db.open())
     {
@@ -28,6 +28,7 @@ void DBConnector::insertData(int seriesNum, int experimentNum, double time, doub
     queryText.append(params.join(",") + ");");
 
     query->exec(queryText);
+    qDebug() << query->lastError();
 
     query->clear();
 }
@@ -40,6 +41,7 @@ void DBConnector::createSeries(int seriesNum, QString seriesName, QString materi
     queryText.append(");");
 
     query->exec(queryText);
+    qDebug() << query->lastError();
 
     query->clear();
 
@@ -50,6 +52,7 @@ void DBConnector::createSeries(int seriesNum, QString seriesName, QString materi
     queryText.append("PRIMARY KEY(\"experiment_num\"));");
 
     query->exec(queryText);
+    qDebug() << query->lastError();
 
     query->clear();
 }
@@ -64,8 +67,8 @@ void DBConnector::deleteSeries(int seriesNum)
 
 QSqlQuery DBConnector::getSeriesNames()
 {
-    query->prepare("SELECT series_name FROM experiment_info");
-    query->exec();
+    query->exec("SELECT series_name FROM experiment_info");
+    qDebug() << query->lastError();
 
     return *query;
 }
@@ -76,6 +79,7 @@ bool DBConnector::hasSeries(QString name)
     queryText.append("\"" + name + "\"");
 
     query->exec(queryText);
+    qDebug() << query->lastError();
 
     if(query->next())
     {
@@ -89,12 +93,17 @@ bool DBConnector::hasSeries(QString name)
 
 int DBConnector::countSeries()
 {
-    query->prepare("SELECT COUNT(*) FROM  experiment_info");
+    query->exec("SELECT COUNT(*) FROM  experiment_info");
+    qDebug() << query->lastError();
 
-    query->exec();
-    query->next();
-
-    return query->value(0).toInt();
+    if(query->next())
+    {
+        return query->value(0).toInt();
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 QSqlQuery DBConnector::getData(int seriesNum, int experimentNum, double time)
