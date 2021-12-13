@@ -1,11 +1,16 @@
 #include "dbconnector.h"
 #include <QDebug>
 #include <QSqlError>
+#include <QFileDialog>
+#include <QDir>
 
-DBConnector::DBConnector()
+DBConnector::DBConnector(QWidget *parent)
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("D:\\qt_projects\\stretching_machine\\TensileTest\\DataBase.db");
+
+    QString dbPath = QFileDialog::getOpenFileName(parent, "Open DataBase.db", QDir::rootPath());
+
+    db.setDatabaseName(dbPath);
 
     if(db.open())
     {
@@ -110,6 +115,16 @@ QSqlQuery DBConnector::getData(int seriesNum, int experimentNum, double time)
 {
     QString queryText = "SELECT F, delta_l FROM experiment_data WHERE series_num = ";
     queryText.append(QString::number(seriesNum) + " AND experiment_num = " + QString::number(experimentNum) + " AND time = " + QString::number(time));
+
+    query->exec(queryText);
+
+    return *query;
+}
+
+QSqlQuery DBConnector::getExperiments(int seriesNum)
+{
+    QString queryText = "SELECT DISTINCT experiment_num FROM experiment_data WHERE series_num = ";
+    queryText.append(QString::number(seriesNum));
 
     query->exec(queryText);
 

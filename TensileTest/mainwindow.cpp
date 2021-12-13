@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->spinFrequency->setSingleStep(5);
     ui->spinFrequency->setSuffix(" Hz"); 
       
-    db = new DBConnector();
+    db = new DBConnector(this);
 }
 
 
@@ -237,6 +237,14 @@ void MainWindow::on_radioExisting_clicked()
     }
 }
 
+void MainWindow::on_comSeries_currentIndexChanged(int index)
+{
+    QSqlQuery qData = db->getExperiments(index + 1);
+    while(qData.next())
+    {
+        ui->comExperiment->addItem(qData.value(0).toString());
+    }
+}
 
 
 //TIME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -269,6 +277,7 @@ void MainWindow::on_drawB_clicked()
                 db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
 
+            currentExperiment = QInputDialog::getInt(this, "New Experiment", "What's the number of the experiment?");
 
             //vfd
             VFD.run();
@@ -300,6 +309,8 @@ void MainWindow::on_drawB_clicked()
     }
     else if(ui->radioExisting->isChecked())
     {
+        currentExperiment = ui->comExperiment->currentText().toInt();
+
         QMessageBox::information(this, "Drawing", "Existing");
 
         //Timer
@@ -428,4 +439,5 @@ void MainWindow::on_pushButton_clicked()
     VFD.setFrequency(ui->spinFrequency->value());
 
 }
+
 
