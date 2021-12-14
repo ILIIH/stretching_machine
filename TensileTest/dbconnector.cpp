@@ -78,7 +78,7 @@ QSqlQuery DBConnector::getSeriesNames()
     return *query;
 }
 
-bool DBConnector::hasSeries(QString name)
+bool DBConnector::getSeries(QString name)
 {
     QString queryText = "SELECT series_num FROM  experiment_info WHERE series_name = ";
     queryText.append("\"" + name + "\"");
@@ -88,11 +88,11 @@ bool DBConnector::hasSeries(QString name)
 
     if(query->next())
     {
-        return true;
+        return query->value(0).toInt();
     }
     else
     {
-        return false;
+        return 0;
     }
 }
 

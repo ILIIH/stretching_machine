@@ -229,6 +229,8 @@ void MainWindow::on_radioExisting_clicked()
     //another widget
     ui->lineSeries->setEnabled(false);
 
+    ui->comSeries->clear();
+
     QSqlQuery qData = db->getSeriesNames();
     while(qData.next())
     {
@@ -238,6 +240,8 @@ void MainWindow::on_radioExisting_clicked()
 
 void MainWindow::on_comSeries_currentIndexChanged(int index)
 {
+    ui->comExperiment->clear();
+
     QSqlQuery qData = db->getExperiments(index + 1);
     while(qData.next())
     {
@@ -264,8 +268,9 @@ void MainWindow::on_drawB_clicked()
 
             //DataBase
             QString currentSeriesName = ui->lineSeries->text();
+            currentSeriesNum = db->getSeries(currentSeriesName);
 
-            if(!db->hasSeries(currentSeriesName))
+            if(!currentSeriesNum)
             {
                 currentSeriesNum = db->countSeries() + 1;   //QString material, int height, int width, int length, QStringList properties
                 QString material = QInputDialog::getText(this, "New Series", "What's the material?");
