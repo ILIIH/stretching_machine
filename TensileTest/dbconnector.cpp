@@ -33,7 +33,7 @@ void DBConnector::insertData(int seriesNum, int experimentNum, double time, doub
     queryText.append(params.join(",") + ");");
 
     query->exec(queryText);
-    qDebug() << query->lastError();
+    //qDebug() << query->lastError();
 
     query->clear();
 }

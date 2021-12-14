@@ -333,17 +333,22 @@ void MainWindow::clockDraw()
 
 void MainWindow::clockSerials()
 {
-    double l = Length.getSeria();
     double f = Force.getSeria();
-    Graphic.Add(l, f);
+    double l;
+    if (f <= 0.1)
+    {
+        l = Length.getSeria();
 
-    db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // Nikita: drawing time? Roma: Yes
+        Graphic.Add(l, f);
 
-    //Widget
-    ui->lcdN->display(drawingTime);
-    ui->CurrentLengthLCD->display(l);
-    ui->CurrentForceLCD->display(f);
-    drawingTime += 0.1;
+        db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // Nikita: drawing time? Roma: Yes
+
+        //Widget
+        ui->lcdN->display(drawingTime);
+        ui->CurrentLengthLCD->display(l);
+        ui->CurrentForceLCD->display(f);
+        drawingTime += 0.1;
+    }
 }
 
 void MainWindow::clockExistingData()
@@ -440,4 +445,10 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    VFD.stop();
+}
 

@@ -101,6 +101,8 @@ void vfd::stop()
 
 void vfd::setFrequency(float frq)
 {
+    port->waitForBytesWritten(100);
+
     msg=":";
 
     //zapisali slave, func i adres

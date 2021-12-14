@@ -28,7 +28,11 @@ void graphic::setQCustomPlot(QCustomPlot *Graphic)
     //this->Graphic->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
     this->Graphic->axisRect()->setupFullAxesBox();
     this->Graphic->rescaleAxes();
+
+    this->Graphic->xAxis->setLabel("Delta L");
+    this->Graphic->yAxis->setLabel("Force");
 }
+
 
 void graphic::Add(double l, double f)
 {

@@ -108,6 +108,8 @@ double SerialPorts::getSeria()
 
     lastResult = result;
 
+    //qDebug () << "Serial: " << result;
+
     return result;
 
 }

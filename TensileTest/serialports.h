@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+#include <QDebug>
 
 class SerialPorts : public QObject
 {
