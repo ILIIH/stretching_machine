@@ -96,7 +96,7 @@ double SerialPorts::getSeria()
         try
         {
             result = abs(ba1.toDouble());
-            qDebug () << "Serial: " << result;
+            //qDebug () << "Serial: " << result;
         }
         catch (QString error) {
             result = lastResult;
@@ -106,6 +106,9 @@ double SerialPorts::getSeria()
     {
         result = lastResult;
     }
+
+    if (result == 0)
+        result = lastResult;
 
     lastResult = result;
 

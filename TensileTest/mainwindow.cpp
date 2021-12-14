@@ -309,6 +309,7 @@ void MainWindow::on_drawB_clicked()
     }
     else if(ui->radioExisting->isChecked())
     {
+        qDebug () << "EXSST";
         currentExperiment = ui->comExperiment->currentText().toInt();
 
         QMessageBox::information(this, "Drawing", "Existing");
@@ -340,7 +341,7 @@ void MainWindow::clockSerials()
         l = Length.getSeria();
 
         Graphic.Add(l, f);
-        qDebug () << "l: " << l << "f: " << f;
+        //qDebug () << "l: " << l << "f: " << f;
 
         db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // Nikita: drawing time? Roma: Yes
 
@@ -348,13 +349,14 @@ void MainWindow::clockSerials()
         ui->lcdN->display(drawingTime);
         ui->CurrentLengthLCD->display(l);
         ui->CurrentForceLCD->display(f);
+
+        drawingTime += 0.1;
     }
-    drawingTime += 0.1;
 }
 
 void MainWindow::clockExistingData()
 {
-
+    qDebug () << currentSeriesNum << currentExperiment << drawingTime;
     QSqlQuery data = db->getData(currentSeriesNum, currentExperiment, drawingTime);
 
     double F;
