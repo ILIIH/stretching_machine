@@ -101,7 +101,7 @@ void vfd::stop()
 
 void vfd::setFrequency(float frq)
 {
-    port->waitForBytesWritten(100);
+    //port->waitForBytesWritten(100);
 
     msg=":";
 

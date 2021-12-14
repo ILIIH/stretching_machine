@@ -147,7 +147,6 @@ void MainWindow::on_openBFrequency_clicked()
 
     //serial
     VFD.setName(name);
-    VFD.open();
 }
 
 void MainWindow::on_closeBForce_clicked()
@@ -277,18 +276,19 @@ void MainWindow::on_drawB_clicked()
                 db->createSeries(currentSeriesNum, currentSeriesName, material, height, width, length, properties);
             }
 
-            currentExperiment = QInputDialog::getInt(this, "New Experiment", "What's the number of the experiment?");
-
-            //vfd
-            VFD.run();
-            VFD.setFrequency(ui->spinFrequency->value());
-            //vfd
+            currentExperiment = QInputDialog::getInt(this, "New Experiment", "What's the number of the experiment?");   
 
             //serials
             Length.addPort();
             Length.portOpen();
             Force.addPort();
             Force.portOpen();
+            VFD.open();
+
+            //vfd
+            VFD.run();
+            //VFD.setFrequency(ui->spinFrequency->value());
+
 
             //timers
             timerDraw->startTimer(1000);
@@ -335,11 +335,12 @@ void MainWindow::clockSerials()
 {
     double f = Force.getSeria();
     double l;
-    if (f <= 0.1)
+    if (f > 5)
     {
         l = Length.getSeria();
 
         Graphic.Add(l, f);
+        qDebug () << "l: " << l << "f: " << f;
 
         db->insertData(currentSeriesNum, currentExperiment, drawingTime, f, l); // Nikita: drawing time? Roma: Yes
 
@@ -347,8 +348,8 @@ void MainWindow::clockSerials()
         ui->lcdN->display(drawingTime);
         ui->CurrentLengthLCD->display(l);
         ui->CurrentForceLCD->display(f);
-        drawingTime += 0.1;
     }
+    drawingTime += 0.1;
 }
 
 void MainWindow::clockExistingData()
@@ -387,7 +388,6 @@ void MainWindow::on_stopDB_clicked()
     {
         //vfd
         VFD.stop();
-        //vfd
 
         //serials
         Force.portClose();
@@ -409,7 +409,7 @@ void MainWindow::on_stopDB_clicked()
     else
     {
         //vfd
-        VFD.stop();
+        //VFD.stop();
         //vfd
 
         //Timer
