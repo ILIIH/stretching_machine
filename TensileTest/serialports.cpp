@@ -84,6 +84,11 @@ const QString SerialPorts::getName()
     return name;
 }
 
+QSerialPort *SerialPorts::getPort()
+{
+    return serial;
+}
+
 double SerialPorts::getSeria()
 {
     QString ba1;

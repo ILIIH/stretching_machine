@@ -16,7 +16,8 @@ SOURCES += \
     serialports.cpp \
     threadedtimer.cpp \
     vfd.cpp\
-    dbconnector.cpp
+    dbconnector.cpp \
+    vfd2.cpp
 
 HEADERS += \
     graphic.h \
@@ -25,7 +26,8 @@ HEADERS += \
     serialports.h \
     threadedtimer.h \
     vfd.h \
-    dbconnector.h
+    dbconnector.h \
+    vfd2.h
 
 FORMS += \
     mainwindow.ui

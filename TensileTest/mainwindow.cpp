@@ -36,9 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //vfd
-    connect(ui->forwardButton, &QPushButton::clicked, &VFD, &vfd::forward);
-    connect(ui->reverseButton, &QPushButton::clicked, &VFD, &vfd::reverse);
-
+//    connect(ui->forwardButton, &QPushButton::clicked, &VFD, &vfd::forward);
+//    connect(ui->reverseButton, &QPushButton::clicked, &VFD, &vfd::reverse);
+    connect(ui->forwardButton, &QPushButton::clicked, &vfd2, &VFD2::forward);
+    connect(ui->reverseButton, &QPushButton::clicked, &vfd2, &VFD2::reverse);
+        //v
       
     ui->spinFrequency->setRange(0, 599);
     ui->spinFrequency->setSingleStep(5);
@@ -146,7 +148,10 @@ void MainWindow::on_openBFrequency_clicked()
     ui->labelConditionFrequency->setStyleSheet("color: rgb(0, 170, 0)");
 
     //serial
-    VFD.setName(name);
+   // VFD.setName(name);
+    vfd2.setName(name);
+    vfd2.switchConection();
+        //v
 }
 
 void MainWindow::on_closeBForce_clicked()
@@ -191,8 +196,8 @@ void MainWindow::on_closeBLength_clicked()
 
 void MainWindow::on_closeBFrequency_clicked()
 {
-    usedPorts.removeOne(VFD.getName());
-    portList.append(VFD.getName());
+    usedPorts.removeOne(vfd2.getName());
+    portList.append(vfd2.getName());
 
     comBox();
 
@@ -288,10 +293,16 @@ void MainWindow::on_drawB_clicked()
             Length.portOpen();
             Force.addPort();
             Force.portOpen();
-            VFD.open();
+            //VFD.open();
+            vfd2.addPort();
+            vfd2.portOpen();
+                //v
 
             //vfd
-            VFD.run();
+            //VFD.run();
+            vfd2.run();
+                //v
+
             //VFD.setFrequency(ui->spinFrequency->value());
 
 
@@ -394,11 +405,14 @@ void MainWindow::on_stopDB_clicked()
     if (ui->radioNew->isChecked())
     {
         //vfd
-        VFD.stop();
+       // VFD.stop();
+        vfd2.stop();
+        //v
 
         //serials
         Force.portClose();
         Length.portClose();
+        vfd2.portClose();
 
         //timers
         timerDraw->stopTimer();
@@ -448,14 +462,17 @@ void MainWindow::on_clickTheSettings_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-    VFD.setFrequency(ui->spinFrequency->value());
-
+    //VFD.setFrequency(ui->spinFrequency->value());
+    vfd2.setFrequency(ui->spinFrequency->value());
+    //v
 }
 
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    VFD.stop();
+    //VFD.stop();
+    vfd2.stop();
+    //v
 }
 

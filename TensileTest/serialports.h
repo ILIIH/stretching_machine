@@ -28,10 +28,11 @@ public:
     void changePort(QString);
     void portOpen();
     void portClose();
-    void writeData(QString);
+    void writeData(QString); //ne nuzno
     void switchConection();
     bool getConection();
     const QString getName();
+    QSerialPort *getPort(); //dlia vfd2
 
 public slots:
     double getSeria(); // Метод с полезной нагрузкой, который может выполняться в цикле

@@ -6,8 +6,10 @@ debug/serialports.o
 debug/threadedtimer.o
 debug/vfd.o
 debug/dbconnector.o
+debug/vfd2.o
 debug/moc_mainwindow.o
 debug/moc_qcustomplot.o
 debug/moc_serialports.o
 debug/moc_threadedtimer.o
 debug/moc_vfd.o
+debug/moc_vfd2.o

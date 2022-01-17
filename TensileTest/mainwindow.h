@@ -12,6 +12,7 @@
 #include <threadedtimer.h>
 
 #include <vfd.h>
+#include <vfd2.h>
 
 #include <dbconnector.h>
 
@@ -28,16 +29,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     void comBox();
     ~MainWindow();
-
-    //vfd
-    void portSettings();
-    int lrcCount(QByteArray);
-    void readAnswer();
-    void forward();
-    void reverse();
-    void run();
-    void stop();
-    //vfd
 
 
 private slots:
@@ -91,7 +82,8 @@ private:
     SerialPorts Force, Length; //Vera. Обязательно используй setName, addPort и portOpen для VFD
     QList<QString> portList, usedPorts; //Vera. Используй эти массивы для свободных и активных ком портов, а после обновляй comboBox (comLForce, comLLength)
 
-    vfd VFD;
+   // vfd VFD;
+    VFD2 vfd2;      //v
 
     /*
 
