@@ -301,6 +301,8 @@ void MainWindow::on_drawB_clicked()
             //vfd
             //VFD.run();
             vfd2.run();
+            vfd2.setFrequency(ui->spinFrequency->value());
+
                 //v
 
             //VFD.setFrequency(ui->spinFrequency->value());
@@ -372,19 +374,22 @@ void MainWindow::clockSerials()
 
 void MainWindow::clockExistingData()
 {
-    qDebug () << currentSeriesNum << currentExperiment << drawingTime;
+    qDebug() << 2;
     QSqlQuery data = db->getData(currentSeriesNum, currentExperiment, drawingTime);
 
     double F;
     double delta_l;
+
     if(data.next()) //OK
     {
         F = data.value(0).toDouble();
         delta_l = data.value(1).toDouble();
+        qDebug () << currentSeriesNum << currentExperiment << drawingTime << F << delta_l;
     }
     else
     {
         graphFromDB->stop();
+        qDebug() << 1;
     }
 
     Graphic.Add(delta_l, F);
