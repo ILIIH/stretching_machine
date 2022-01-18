@@ -301,7 +301,7 @@ void MainWindow::on_drawB_clicked()
             //vfd
             //VFD.run();
             vfd2.run();
-            vfd2.setFrequency(ui->spinFrequency->value());
+           // vfd2.setFrequency(ui->spinFrequency->value());
 
                 //v
 
@@ -328,6 +328,7 @@ void MainWindow::on_drawB_clicked()
     else if(ui->radioExisting->isChecked())
     {
         qDebug () << "EXSST";
+        currentSeriesNum = ui->comSeries->currentIndex() + 1;
         currentExperiment = ui->comExperiment->currentText().toInt();
 
         QMessageBox::information(this, "Drawing", "Existing");
@@ -374,7 +375,7 @@ void MainWindow::clockSerials()
 
 void MainWindow::clockExistingData()
 {
-    qDebug() << 2;
+    qDebug() << currentSeriesNum << currentExperiment << drawingTime;
     QSqlQuery data = db->getData(currentSeriesNum, currentExperiment, drawingTime);
 
     double F;
@@ -384,7 +385,7 @@ void MainWindow::clockExistingData()
     {
         F = data.value(0).toDouble();
         delta_l = data.value(1).toDouble();
-        qDebug () << currentSeriesNum << currentExperiment << drawingTime << F << delta_l;
+        qDebug () << F << delta_l;
     }
     else
     {
@@ -480,4 +481,3 @@ void MainWindow::on_pushButton_2_clicked()
     vfd2.stop();
     //v
 }
-

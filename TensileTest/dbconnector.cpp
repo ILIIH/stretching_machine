@@ -33,7 +33,7 @@ void DBConnector::insertData(int seriesNum, int experimentNum, double time, doub
     queryText.append(params.join(",") + ");");
 
     query->exec(queryText);
-    qDebug() << query->lastError();
+    //qDebug() << query->lastError();
 
     query->clear();
 }
@@ -117,6 +117,7 @@ QSqlQuery DBConnector::getData(int seriesNum, int experimentNum, double time)
     queryText.append(QString::number(seriesNum) + " AND experiment_num = " + QString::number(experimentNum) + " AND time = " + QString::number(time));
 
     query->exec(queryText);
+    qDebug() << query->lastError();
 
     return *query;
 }
