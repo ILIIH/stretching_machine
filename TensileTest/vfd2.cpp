@@ -2,7 +2,7 @@
 
 VFD2::VFD2()
 {
-    connect(getPort(), &QSerialPort::readyRead, this, &VFD2::readAnswer );
+   // connect(getPort(), &QSerialPort::readyRead, this, &VFD2::readAnswer );
     //???????????????????
 }
 
