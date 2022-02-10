@@ -37,6 +37,7 @@ void graphic::setQCustomPlot(QCustomPlot *Graphic)
 void graphic::Add(double l, double f)
 {
     QCPCurveData recentData = QCPCurveData(dotIndex++, l, f);
+    this->Graphic->rescaleAxes();
     //Dots.append(recentData);
     //plot->data()->set(Dots, true);
 
