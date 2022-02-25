@@ -267,7 +267,7 @@ void MainWindow::on_drawB_clicked()
     drawingTime = 0;
     if (ui->radioNew->isChecked())
     {
-        if (Force.getConection() && Length.getConection())
+        if (Force.getConection())// && Length.getConection())
         {
             QMessageBox::information(this, "Drawing", "New");
 
@@ -418,7 +418,7 @@ void MainWindow::on_stopDB_clicked()
         //serials
         Force.portClose();
         Length.portClose();
-        vfd2.portClose();
+        //vfd2.portClose();
 
         //timers
         timerDraw->stopTimer();

@@ -8,7 +8,7 @@ VFD2::VFD2()
 
 VFD2::~VFD2()
 {
-
+    portClose();
 }
 
 void VFD2::portSettings()
